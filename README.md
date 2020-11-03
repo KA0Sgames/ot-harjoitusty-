@@ -9,3 +9,5 @@ Viikko 1
 [komentorivi.txt](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 Harjoituksena vielä __*muotoiltua*__ tekstiä. Sekä **lihavoituna**, että *kursivoituna*.
+
+Harjoitus vielä githubin ja paikallisen reposition epäsynkroonia varten.
