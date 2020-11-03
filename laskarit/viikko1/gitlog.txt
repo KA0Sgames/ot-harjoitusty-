@@ -1,0 +1,105 @@
+commit f9a65618176bbb747ca8f7f88d32311673fa89e8
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 20:25:37 2020 +0200
+
+    Tiedosto file1 poistettu, tiedosto file2 uudelleennimetty tiedostoksi file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1df8adc569ab813ab7060ed5f7eb2ebfa3ea5c48
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 20:19:32 2020 +0200
+
+    Kansio tiedostoja luotu ja sen sisään kolme tiedostoa
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit e66983254769b0fb8625ef8342ed7c2da9ebf446
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 19:09:08 2020 +0200
+
+    Lisää muutoksia satelee
+
+ eka.txt    | 6 ++++++
+ kolmas.txt | 2 ++
+ 2 files changed, 8 insertions(+)
+
+commit 0932620463227bbc308aa8b44ba634a500d1b6b2
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 19:04:46 2020 +0200
+
+    Tiedosto tiedosto.txt uudelleennimetty ja toinen.txt poistettu
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit f818880d49f7c49b582655cfbb0142dc4c5ef24b
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 18:57:37 2020 +0200
+
+    Tiedoston tiedosto.txt tiedot muutettu
+
+ tiedosto.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+commit e5deaa6da722901fd744a8187e957df0911a0e8e
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 18:54:39 2020 +0200
+
+    Tiedostoon tiedosto.txt lisätty tietoa
+
+ tiedosto.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+commit bf3a88067ba057010df53e06b121909a5255a709
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 15:46:00 2020 +0200
+
+    hakemisto ja sinne tiedosto lisätty
+
+ stuff/jaVielaYksiTiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 58112db92451a6c9f6fefae8756dceb4eea13701
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 15:43:37 2020 +0200
+
+    lisää muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 52cdcc4f82dac67658bbeacf513af41c712b0d2b
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 15:41:09 2020 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 96e1166de9a75e454e77449a6ad646a7530c87f2
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 15:36:42 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 2df48e94594db2f296244412fe79763b88fc3194
+Author: Joonas Ylönen <KA0Screativity@gmail.com>
+Date:   Tue Nov 3 15:33:30 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
