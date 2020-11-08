@@ -14,7 +14,7 @@ lisätään pääkäyttäjä, joka voi hallinnoida kaikkia käyttäjiä.
 
 Sovellus koostuu neljästä näkymästä.
 
-![vaatimusmäärittely](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/pictures/vaatimusmaarittely.jpeg)
+![vaatimusmäärittely](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/pictures/Vaatimusm%C3%A4%C3%A4rittely.jpg)
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollisuus siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen
 kirjautumisen yhteydessä hahmon valinta/luonti näkymään, josta hahmon valitsemalla pääsee pelaamaan peliä.
