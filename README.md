@@ -11,3 +11,8 @@ Viikko 1
 Harjoituksena vielä __*muotoiltua*__ tekstiä. Sekä **lihavoituna**, että *kursivoituna*.
 
 Harjoitus vielä githubin ja paikallisen reposition epäsynkroonia varten.
+
+
+Viikko 2
+
+[työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
