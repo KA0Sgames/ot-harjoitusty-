@@ -1,4 +1,4 @@
-# Vaatimusmaarittely
+# Vaatimusmäärittely
 
 ### Sovelluksen tarkoitus
 
@@ -13,6 +13,8 @@ lisätään pääkäyttäjä, joka voi hallinnoida kaikkia käyttäjiä.
 ### Käyttöliittymäluonnos
 
 Sovellus koostuu neljästä näkymästä.
+
+![vaatimusmäärittely](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/pictures/vaatimusmaarittely.jpeg)
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollisuus siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen
 kirjautumisen yhteydessä hahmon valinta/luonti näkymään, josta hahmon valitsemalla pääsee pelaamaan peliä.
