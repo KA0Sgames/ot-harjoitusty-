@@ -50,6 +50,16 @@ public class MaksukorttiTest {
     }
     
     @Test
+    public void syoMaukkaastiEiVieSaldoaNegatiiviseksi() {
+        kortti.syoMaukkaasti();
+        kortti.syoMaukkaasti();
+        // nyt kortin saldo on 2
+        kortti.syoMaukkaasti();
+        
+        assertEquals("Kortilla on rahaa 2.0 euroa", kortti.toString());
+    }
+    
+    @Test
     public void kortilleVoiLadataRahaa() {
         kortti.lataaRahaa(25);
         
@@ -61,6 +71,36 @@ public class MaksukorttiTest {
         kortti.lataaRahaa(200);
         
         assertEquals("Kortilla on rahaa 150.0 euroa", kortti.toString());
+    }
+    
+    @Test
+    public void negatiivisenSummanLataaminenEiMuutaKortinArvoa() {
+        kortti.lataaRahaa(-20);
+        
+        assertEquals("Kortilla on rahaa 10.0 euroa", kortti.toString());
+    }
+    
+    @Test
+    public void kortillaVoiOstaaEdullisenLounaanKunOnTasaraha() {
+        kortti.lataaRahaa(3);
+        kortti.syoMaukkaasti();
+        kortti.syoMaukkaasti();
+        kortti.syoEdullisesti();
+        // kortilla on nyt rahaa 2.5
+        kortti.syoEdullisesti();
+        
+        assertEquals("Kortilla on rahaa 0.0 euroa", kortti.toString());
+    }
+    
+    @Test
+    public void kortillaVoiOstaaMaukkaanLounaanKunOnTasaraha() {
+        kortti.lataaRahaa(2);
+        kortti.syoMaukkaasti();
+        kortti.syoMaukkaasti();
+        // kortilla on nyt rahaa 4.0
+        kortti.syoMaukkaasti();
+        
+        assertEquals("Kortilla on rahaa 0.0 euroa", kortti.toString());
     }
     
 }
