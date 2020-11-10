@@ -17,4 +17,64 @@ public class MaksukorttiTest {
     public void luotuKorttiOlemassa() {
         assertTrue(kortti!=null);      
     }
+    
+    @Test
+    public void saldoPalauttaaSaldonArvonOikein() {
+        assertEquals(10, kortti.saldo());
+    }
+    
+    @Test
+    public void kortinSaldoAlussaOikein() {
+        assertEquals("saldo: 0.10", kortti.toString());
+    }
+    
+    @Test
+    public void rahanLataaminenKasvattaaSaldoaOikein() {
+        kortti.lataaRahaa(10);
+        
+        assertEquals("saldo: 0.20", kortti.toString());
+    }
+    
+    @Test
+    public void negatiivisenMaaranLataaminenEiMuutaSaldoa() {
+        kortti.lataaRahaa(-10);
+        
+        assertEquals("saldo: 0.10", kortti.toString());
+    }
+    
+    @Test
+    public void otaRahaaVahentaaSaldoaKunRahaaOnTarpeeksi() {
+        kortti.otaRahaa(5);
+        
+        assertEquals("saldo: 0.05", kortti.toString());
+    }
+    
+    @Test
+    public void otaRahaaEiVahennaSaldoaKunRahaaEiOleTarpeeksi() {
+        kortti.otaRahaa(20);
+        
+        assertEquals("saldo: 0.10", kortti.toString());
+    }
+    
+    @Test
+    public void otaRahaaEiMuutaSaldoaKunKoitetaanOttaaNegatiivinenSumma() {
+        kortti.otaRahaa(-10);
+        
+        assertEquals("saldo: 0.10", kortti.toString());
+    }
+    
+    @Test
+    public void otaRahaaPalauttaaTrueKunRahaaOnTarpeeksi() {
+        assertEquals(true, kortti.otaRahaa(5));
+    }
+    
+    @Test
+    public void otaRahaaPalauttaaFalseKunRahaaEiOleTarpeeksi() {
+        assertEquals(false, kortti.otaRahaa(20));
+    }
+    
+    @Test
+    public void otaRahaaPalauttaaFalseKunYritetaanOttaaNegatiivinenSumma() {
+        assertEquals(false, kortti.otaRahaa(-10));
+    }
 }

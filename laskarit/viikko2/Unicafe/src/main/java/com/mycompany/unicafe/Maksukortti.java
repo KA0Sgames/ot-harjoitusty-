@@ -14,10 +14,16 @@ public class Maksukortti {
     }
  
     public void lataaRahaa(int lisays) {
-        this.saldo += lisays;
+        if (lisays >= 0) {
+            this.saldo += lisays;
+        }
     }
  
     public boolean otaRahaa(int maara) {
+        if (maara < 0) {
+            return false;
+        }
+        
         if (this.saldo < maara) {
             return false;
         }
@@ -30,6 +36,10 @@ public class Maksukortti {
     public String toString() {
         int euroa = saldo/100;
         int senttia = saldo%100;
+        
+        if (senttia < 10) {
+            return "saldo: " + euroa + ".0" + senttia;
+        }
         return "saldo: "+euroa+"."+senttia;
     } 
     
