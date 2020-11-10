@@ -16,3 +16,5 @@ Harjoitus vielä githubin ja paikallisen reposition epäsynkroonia varten.
 Viikko 2
 
 [työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
+
+[Kuva Unicafe tehtävän kattavuusraportista](/laskarit/viikko2/testikattavuus.jpg)
