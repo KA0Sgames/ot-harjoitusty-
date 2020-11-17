@@ -1,20 +1,20 @@
 # Ohjelmistotekniikka, harjoitustyö
 -----------------------------------
-### Tehtävät
-------------
-Viikko 1
+# Caventure luolastoseikkailu
 
-[gitlog.txt](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/KA0Sgames/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-Harjoituksena vielä __*muotoiltua*__ tekstiä. Sekä **lihavoituna**, että *kursivoituna*.
-
-Harjoitus vielä githubin ja paikallisen reposition epäsynkroonia varten.
+Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
 
-Viikko 2
+### Dokumentaatio
+
+[Vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
 [työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
-[Kuva Unicafe tehtävän kattavuusraportista](/laskarit/viikko2/testikattavuus.jpg)
+### Huomio
+
+En ole vielä saanut tehtyä toimivaa versiota. JavaFX ja pom.xml tuottavat päänvaivaa.
+
+Vaikka kolmosviikon palautus ei nyt vastaa tehtävänantoa, niin en ole luovuttamassa kurssia ja pyrin varaamaan
+
+työlle enemmän aikaa ja saada sen kuntoon.

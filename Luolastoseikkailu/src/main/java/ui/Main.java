@@ -1,4 +1,4 @@
-package luolastoseikkailu.ui;
+package ui;
 
 public class Main {
     public static void Main(String[] args) {
