@@ -46,6 +46,14 @@ public class Ui extends Application {
                 if(pressedKeys.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
                     player.moveRight();
                 }
+                
+                if(pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)) {
+                    player.moveUp();
+                }
+                
+                if(pressedKeys.getOrDefault(KeyCode.DOWN, Boolean.FALSE)) {
+                    player.moveDown();
+                }
             }
         }.start();
     }
