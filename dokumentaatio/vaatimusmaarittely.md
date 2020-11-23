@@ -23,7 +23,7 @@ kirjautumisen yhteydessä hahmon valinta/luonti näkymään, josta hahmon valits
 
 ###### Ennen kirjautumista
 
-- [ ]Käyttäjä voi luoda käyttäjätunnuksen
+- [ ] Käyttäjä voi luoda käyttäjätunnuksen
 
   * [ ] Käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään neljä merkkiä
 
