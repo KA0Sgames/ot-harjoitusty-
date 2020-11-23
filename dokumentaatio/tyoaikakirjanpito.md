@@ -8,4 +8,5 @@
 | 19.11.-20 | 2   |pajassa bugin etsintää, ohja materiaalin lukua ja käyttäjän hahmon lievää muokkausta |
 | 23.11.-20 | 1   |muokkaa pom.xml niin, että testit ei tarkasta ui:ta, testien kirjoitusta Player luokalle |
 |           | 1   |ota checkstyle käyttöön, muokkaa pom.xml ja luo checkstyle.xml ja skipped_files.xml, korjaa checkstyle virheet |
-| yht       | 12  | |
+|           | 3   |luin pääkohdittain läpi tikape materiaalin |
+| yht       | 15  | |
