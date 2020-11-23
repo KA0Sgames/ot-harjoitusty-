@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 
 public class Ui extends Application {
     
+    @Override
     public void start(Stage stage) throws Exception {
         Pane screen = new Pane();
         screen.setPrefSize(1200, 800);
@@ -39,19 +40,19 @@ public class Ui extends Application {
             
             @Override
             public void handle(long present) {
-                if(pressedKeys.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
+                if (pressedKeys.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
                     player.moveLeft();
                 }
                 
-                if(pressedKeys.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
+                if (pressedKeys.getOrDefault(KeyCode.RIGHT, Boolean.FALSE)) {
                     player.moveRight();
                 }
                 
-                if(pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)) {
+                if (pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)) {
                     player.moveUp();
                 }
                 
-                if(pressedKeys.getOrDefault(KeyCode.DOWN, Boolean.FALSE)) {
+                if (pressedKeys.getOrDefault(KeyCode.DOWN, Boolean.FALSE)) {
                     player.moveDown();
                 }
             }
