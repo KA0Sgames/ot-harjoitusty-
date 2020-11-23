@@ -31,7 +31,7 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>luolastoseikkailu/ui/*</exclude>
+                        <exclude>/ui/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
