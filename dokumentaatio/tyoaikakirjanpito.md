@@ -9,4 +9,7 @@
 | 23.11.-20 | 1   |muokkaa pom.xml niin, että testit ei tarkasta ui:ta, testien kirjoitusta Player luokalle |
 |           | 1   |ota checkstyle käyttöön, muokkaa pom.xml ja luo checkstyle.xml ja skipped_files.xml, korjaa checkstyle virheet |
 |           | 3   |luin pääkohdittain läpi tikape materiaalin |
-| yht       | 15  | |
+|24.11.-20  | 1   |kertasin perinnän ja rajapinnat ohja materiaalista |
+|	    | 3   |pajassa ohjelman rakenteen suunnittelua sekä Daon toteutuksen suunnittelua, dependencyn lisäys ja hieman koodausta |
+|	    | 3   |Daon koodausta ja toimimisen testaamista main-metodin avulla tekstipohjaisesti, sekä bugin etsintää |
+| yht       | 22  | |
