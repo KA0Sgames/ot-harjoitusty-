@@ -11,10 +11,24 @@ Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
 [työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
-### Huomio
+### Komentorivitoiminnot
 
-En ole vielä saanut tehtyä toimivaa versiota. JavaFX ja pom.xml tuottavat päänvaivaa.
+#### Testaus
 
-Vaikka kolmosviikon palautus ei nyt vastaa tehtävänantoa, niin en ole luovuttamassa kurssia ja pyrin varaamaan
+Testit suoritetaan komennolla: mvn test
 
-työlle enemmän aikaa ja saada sen kuntoon.
+Testikattavuusraportti luodaan komennolla: mvn jacoco:report
+
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto target/site/jacoco/index.html
+
+#### Suoritettavan jarin generointi
+
+Komento: mvn package
+
+#### Checkstyle
+
+Tiedoston checkstyle.xml määrittelemät tarkastukset suoritetaan komennolla:
+
+mvn jxr:jxr checkstyle:checkstyle
+
+Mahdolliset virheilmoitukset näkee avaamalla selaimella tiedoston target/site/checkstyle.html
