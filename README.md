@@ -15,20 +15,34 @@ Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
 #### Testaus
 
-Testit suoritetaan komennolla: mvn test
+Testit suoritetaan komennolla
 
-Testikattavuusraportti luodaan komennolla: mvn jacoco:report
+```
+mvn test
+```
+
+Testikattavuusraportti luodaan komennolla
+
+```
+mvn jacoco:report
+```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto target/site/jacoco/index.html
 
 #### Suoritettavan jarin generointi
 
-Komento: mvn package
+Komento
+
+```
+ mvn package
+```
 
 #### Checkstyle
 
 Tiedoston checkstyle.xml määrittelemät tarkastukset suoritetaan komennolla:
 
+```
 mvn jxr:jxr checkstyle:checkstyle
+```
 
 Mahdolliset virheilmoitukset näkee avaamalla selaimella tiedoston target/site/checkstyle.html
