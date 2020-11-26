@@ -12,4 +12,5 @@
 |24.11.-20  | 1   |kertasin perinnän ja rajapinnat ohja materiaalista |
 |	    | 3   |pajassa ohjelman rakenteen suunnittelua sekä Daon toteutuksen suunnittelua, dependencyn lisäys ja hieman koodausta |
 |	    | 3   |Daon koodausta ja toimimisen testaamista main-metodin avulla tekstipohjaisesti, sekä bugin etsintää |
-| yht       | 22  | |
+|26.11.-20  | 1   |Koodattu luokat CharacterInfo ja Container hahmojen siirtoon tietokannasta |
+| yht       | 23  | |
