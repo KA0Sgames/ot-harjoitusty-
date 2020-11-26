@@ -15,7 +15,7 @@ public class CaventureDao {
         Statement s = db.createStatement();
         s.execute("PRAGMA foreign_keys = ON");
         s.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
-        s.execute("CREATE TABLE Characters (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES Users, name TEXT UNIQUE NOT NULL, experience INTEGER DEFAULT 0)");
+        s.execute("CREATE TABLE Characters (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES Users, name TEXT UNIQUE NOT NULL, experience INTEGER DEFAULT 0, gold INTEGER DEFAULT 0)");
         db.close();
     }
     
