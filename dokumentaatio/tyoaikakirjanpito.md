@@ -14,4 +14,5 @@
 |	    | 3   |Daon koodausta ja toimimisen testaamista main-metodin avulla tekstipohjaisesti, sekä bugin etsintää |
 |26.11.-20  | 1   |Koodattu luokat CharacterInfo ja Container hahmojen siirtoon tietokannasta |
 |	    | 1   |Poistin Container-luokan turhana ja kirjoitin hahmojen tietoja tietokannassa käsitteleviä metodeja |
-| yht       | 24  | |
+|29.11.-20  | 2   |Ohja materiaalin kertausta graafiseen käyttöliittymään liittyen useampien näkymien tapauksessa ja esimerkkisovelluksen läpikäyntiä |
+| yht       | 26  | |
