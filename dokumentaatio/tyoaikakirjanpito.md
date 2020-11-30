@@ -15,4 +15,5 @@
 |26.11.-20  | 1   |Koodattu luokat CharacterInfo ja Container hahmojen siirtoon tietokannasta |
 |	    | 1   |Poistin Container-luokan turhana ja kirjoitin hahmojen tietoja tietokannassa käsitteleviä metodeja |
 |29.11.-20  | 2   |Ohja materiaalin kertausta graafiseen käyttöliittymään liittyen useampien näkymien tapauksessa ja esimerkkisovelluksen läpikäyntiä |
-| yht       | 26  | |
+|30.11.-20  | 3   |Ui nappien toiminnallisuuden määrittelemistä ja Daon yhdistäminen Controller luokalla |
+| yht       | 29  | |
