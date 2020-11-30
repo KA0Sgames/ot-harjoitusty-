@@ -10,15 +10,25 @@ import java.util.Map;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
+import domain.Controller;
+import javafx.scene.paint.Color;
 
 public class Ui extends Application {
+    private Scene loginScene;
+    private Scene userCreationScene;
+    private Scene characterScene;
+    private Scene gameScene;
+    private Controller controller;
+    
     
     @Override
     public void start(Stage stage) throws Exception {
+        this.controller = new Controller();
         // login scene:
         
         GridPane loginPane = new GridPane();
@@ -29,7 +39,7 @@ public class Ui extends Application {
         
         Label errorMessage = new Label("");
         TextField usernameInput = new TextField();
-        TextField passwordInput = new TextField();
+        PasswordField passwordInput = new PasswordField();
         Button loginButton = new Button("Login");
         Button createUserButton = new Button("Create user");
         
@@ -41,7 +51,27 @@ public class Ui extends Application {
         loginPane.add(loginButton, 2, 4);
         loginPane.add(createUserButton, 2, 5);
         
-        Scene loginScene = new Scene(loginPane);
+        this.loginScene = new Scene(loginPane);
+        
+        loginButton.setOnAction(e -> {
+            if (!this.controller.askIfUserExists(usernameInput.getText().trim())) {
+                errorMessage.setText("Username doesn't exist");
+                errorMessage.setTextFill(Color.RED);
+            } else if (!this.controller.askIfPasswordMatches(usernameInput.getText().trim(), passwordInput.getText())) {
+                errorMessage.setText("Password incorrect!");
+                errorMessage.setTextFill(Color.RED);
+            } else {
+                stage.setScene(this.characterScene);
+            }
+        });
+        
+        createUserButton.setOnAction(e -> {
+            errorMessage.setText("");
+            usernameInput.setText("");
+            passwordInput.setText("");
+            stage.setScene(this.userCreationScene);
+        });
+        
         
         // user creation scene:
         
@@ -63,8 +93,37 @@ public class Ui extends Application {
         userCreationPane.add(newPassword, 2, 3);
         userCreationPane.add(createUser, 2, 4);
         
-        Scene userCreationScene = new Scene(userCreationPane);
+        this.userCreationScene = new Scene(userCreationPane);
         
+        createUser.setOnAction(e -> {
+            if (this.controller.askIfUserExists(newUsername.getText().trim())) {
+                errorInCreation.setText("Username is already reserved");
+                errorInCreation.setTextFill(Color.RED);
+            } else if (newUsername.getText().trim().length() < 4) {
+                errorInCreation.setText("Username is too short, at least 4 characters needed.");
+                errorInCreation.setTextFill(Color.RED);
+            } else if (newPassword.getText().trim().length() < 4) {
+                errorInCreation.setText("Password is too short, at least 4 characters needed.");
+                errorInCreation.setTextFill(Color.RED);
+            } else {
+                this.controller.createUser(newUsername.getText().trim(), newPassword.getText().trim());
+                errorInCreation.setText("");
+                newUsername.setText("");
+                newPassword.setText("");
+                stage.setScene(this.loginScene);
+            }
+        });
+        
+        // character scene:
+        
+        GridPane characterPane = new GridPane();
+        characterPane.setPrefSize(400, 300);
+        characterPane.setPadding((new Insets(10)));
+        characterPane.setVgap(10);
+        characterPane.setHgap(10);
+        
+        
+        // game scene
         
         Pane screen = new Pane();
         screen.setPrefSize(1200, 800);
@@ -73,18 +132,18 @@ public class Ui extends Application {
         
         screen.getChildren().add(player.getCharacter());
         
-        Scene scene = new Scene(screen);
+        this.gameScene = new Scene(screen);
         stage.setTitle("Caventure");
         stage.setScene(loginScene);
         stage.show();
         
         Map<KeyCode, Boolean> pressedKeys = new HashMap<>();
         
-        scene.setOnKeyPressed(event -> {
+        this.gameScene.setOnKeyPressed(event -> {
             pressedKeys.put(event.getCode(), Boolean.TRUE);
         });
         
-        scene.setOnKeyReleased(event -> {
+        this.gameScene.setOnKeyReleased(event -> {
             pressedKeys.put(event.getCode(), Boolean.FALSE);
         });
         

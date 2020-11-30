@@ -12,60 +12,82 @@ public class CaventureDao {
         this.database = "jdbc:sqlite:database.db";
     }
     
-    public void createDB() throws SQLException {
+    public void createDB() {
         Connection db = createConnection();
-        Statement s = db.createStatement();
-        s.execute("PRAGMA foreign_keys = ON");
-        s.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
-        s.execute("CREATE TABLE Characters (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES Users, name TEXT UNIQUE NOT NULL, experience INTEGER DEFAULT 0, gold INTEGER DEFAULT 0)");
-        db.close();
+        
+        try {
+
+            Statement s = db.createStatement();
+            s.execute("PRAGMA foreign_keys = ON");
+            s.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT UNIQUE NOT NULL, password TEXT NOT NULL)");
+            s.execute("CREATE TABLE Characters (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES Users, name TEXT UNIQUE NOT NULL, experience INTEGER DEFAULT 0, gold INTEGER DEFAULT 0)");
+        
+            db.close();
+        } catch (SQLException e) {
+            return;
+        }
     }
-    
-    public boolean addUser(String user, String pass) throws SQLException {
+
+    public boolean addUser(String user, String pass) {
         if (containsUser(user)) {
             return false;
         }
         
         Connection db = createConnection();
+
+        try {
+            PreparedStatement p = db.prepareStatement("INSERT INTO Users (username, password) VALUES (?,?)");
+            p.setString(1, user);
+            p.setString(2, pass);
         
-        PreparedStatement p = db.prepareStatement("INSERT INTO Users (username, password) VALUES (?,?)");
-        p.setString(1, user);
-        p.setString(2, pass);
+            p.execute();
         
-        p.execute();
+            db.close();
         
-        db.close();
+        } catch (SQLException e) {
+            return false;
+        }
         return true;
     }
     
-    public boolean containsUser(String user) throws SQLException {
+    public boolean containsUser(String user) {
         Connection db = createConnection();
         
-        PreparedStatement check = db.prepareStatement("SELECT Users.username FROM Users WHERE Users.username=?");
-        check.setString(1, user);
+        try {
+            PreparedStatement check = db.prepareStatement("SELECT Users.username FROM Users WHERE Users.username=?");
+            check.setString(1, user);
         
-        ResultSet r = check.executeQuery();
+            ResultSet r = check.executeQuery();
         
-        return r.next();
+            db.close();
+            return r.next();
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
-    public boolean passwordMatches(String user, String pass) throws SQLException {
+    public boolean passwordMatches(String user, String pass) {
         if (!containsUser(user)) {
             return false;
         }
         
         Connection db = createConnection();
         
-        PreparedStatement p = db.prepareStatement("SELECT Users.password FROM Users WHERE Users.username=?");
-        p.setString(1, user);
+        try {
         
-        ResultSet r = p.executeQuery();
+            PreparedStatement p = db.prepareStatement("SELECT Users.password FROM Users WHERE Users.username=?");
+            p.setString(1, user);
         
-        r.next();
-        String resultPassword = r.getString("password");
+            ResultSet r = p.executeQuery();
         
-        db.close();
-        return pass.equals(resultPassword);
+            r.next();
+            String resultPassword = r.getString("password");
+        
+            db.close();
+            return pass.equals(resultPassword);
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
     private int getUserId(String user) throws SQLException {
@@ -88,16 +110,16 @@ public class CaventureDao {
             return false;
         }
         
-        int UserId = getUserId(user);
+        int userId = getUserId(user);
         
-        if (UserId == -1) {
+        if (userId == -1) {
             return false;
         }
         
         Connection db = createConnection();
         
         PreparedStatement addingCharacter = db.prepareStatement("INSERT INTO Characters (user_id, name) VALUES (?,?)");
-        addingCharacter.setInt(1, UserId);
+        addingCharacter.setInt(1, userId);
         addingCharacter.setString(2, name);
         
         addingCharacter.execute();
@@ -166,8 +188,12 @@ public class CaventureDao {
         return characters;
     }
 
-    private Connection createConnection() throws SQLException {
-        Connection db = DriverManager.getConnection(this.database);
-        return db;
+    private Connection createConnection() {
+        try {
+            Connection db = DriverManager.getConnection(this.database);
+            return db;
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }
