@@ -164,27 +164,31 @@ public class CaventureDao {
         return r.next();
     }
     
-    public ArrayDeque<CharacterInfo> getCharacters(String user) throws SQLException {
+    public ArrayDeque<CharacterInfo> getCharacters(String user) {
         ArrayDeque<CharacterInfo> characters = new ArrayDeque<>();
         
         Connection db = createConnection();
         
-        PreparedStatement getCharacters = db.prepareStatement("SELECT Characters.name, Characters.experience, Characters.gold FROM Users, Characters WHERE Users.id=Characters.user_id AND Users.name=? ORDER BY Characters.name");
-        getCharacters.setString(1, user);
+        try {
+            PreparedStatement getCharacters = db.prepareStatement("SELECT Characters.name, Characters.experience, Characters.gold FROM Users, Characters WHERE Users.id=Characters.user_id AND Users.name=? ORDER BY Characters.name");
+            getCharacters.setString(1, user);
         
-        ResultSet r = getCharacters.executeQuery();
+            ResultSet r = getCharacters.executeQuery();
         
-        while (r.next()) {
-            String name = r.getString("name");
-            int experience = r.getInt("experience");
-            int gold = r.getInt("gold");
+            while (r.next()) {
+                String name = r.getString("name");
+                int experience = r.getInt("experience");
+                int gold = r.getInt("gold");
             
-            CharacterInfo character = new CharacterInfo(name, experience, gold);
+                CharacterInfo character = new CharacterInfo(name, experience, gold);
             
-            characters.addLast(character);
+                characters.addLast(character);
+            }
+        
+            db.close();
+        } catch (SQLException e) {
+            return characters;
         }
-        
-        db.close();
         return characters;
     }
 

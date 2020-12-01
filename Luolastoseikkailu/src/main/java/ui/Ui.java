@@ -5,8 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import domain.Player;
+import domain.CharacterInfo;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayDeque;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -61,6 +63,10 @@ public class Ui extends Application {
                 errorMessage.setText("Password incorrect!");
                 errorMessage.setTextFill(Color.RED);
             } else {
+                this.controller.logInUser(usernameInput.getText().trim());
+                errorMessage.setText("");
+                usernameInput.setText("");
+                passwordInput.setText("");
                 stage.setScene(this.characterScene);
             }
         });
@@ -122,6 +128,29 @@ public class Ui extends Application {
         characterPane.setVgap(10);
         characterPane.setHgap(10);
         
+        ArrayDeque<CharacterInfo> characters = this.controller.getCharacters(this.controller.getLoggedInUser());
+        int row = 0;
+        
+        while (characters.size() > 0) {
+            CharacterInfo character = characters.removeFirst();
+            characterPane.add(new Button(character.getName()), 1, row);
+            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
+            row++;
+        }
+        
+        if (row < 3) {
+            TextField newCharName = new TextField();
+            Button createNewChar = new Button("Create");
+            
+            characterPane.add(newCharName, 1, row);
+            characterPane.add(createNewChar, 2, row);
+            row++;
+        }
+        
+        characterPane.add(new Button("Logout"), 1, row);
+        
+        this.characterScene = new Scene(characterPane);
         
         // game scene
         

@@ -16,4 +16,6 @@
 |	    | 1   |Poistin Container-luokan turhana ja kirjoitin hahmojen tietoja tietokannassa käsitteleviä metodeja |
 |29.11.-20  | 2   |Ohja materiaalin kertausta graafiseen käyttöliittymään liittyen useampien näkymien tapauksessa ja esimerkkisovelluksen läpikäyntiä |
 |30.11.-20  | 3   |Ui nappien toiminnallisuuden määrittelemistä ja Daon yhdistäminen Controller luokalla |
-| yht       | 29  | |
+|1.12.-20   | 3   |Pajassa varmistus että Ui on ok. OpenVPN + VMware asennus ja jarrin toimivuuden testausta etätyöpöydällä, jonka yhteydessä paja-ohjaajan odottelua (tyhjässä pajazoomissa). |
+|           | 2   |Ui:n koodausta, character scenen luonti. |
+| yht       | 34  | |
