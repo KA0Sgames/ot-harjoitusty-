@@ -23,15 +23,15 @@ kirjautumisen yhteydessä hahmon valinta/luonti näkymään, josta hahmon valits
 
 ###### Ennen kirjautumista
 
-- [ ] Käyttäjä voi luoda käyttäjätunnuksen
+- [x] Käyttäjä voi luoda käyttäjätunnuksen
 
-  * [ ] Käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään neljä merkkiä
+  * [x] Käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään neljä merkkiä
 
-- [ ] Käyttäjä voi kirjautua järjestelmään
+- [x] Käyttäjä voi kirjautua järjestelmään
 
-  * [ ] Kirjautuminen onnistuu syötettäessä olemassa oleva käyttäjätunnus ja sitä vastaava salasana
-  * [ ] Jos käyttäjätunnusta ei ole olemassa, ilmoittaa järjestelmä tästä
-  * [ ] Jos salasana ei vastaa annettua käyttäjätunnusta, ilmoittaa järjestelmä tästä
+  * [x] Kirjautuminen onnistuu syötettäessä olemassa oleva käyttäjätunnus ja sitä vastaava salasana
+  * [x] Jos käyttäjätunnusta ei ole olemassa, ilmoittaa järjestelmä tästä
+  * [x] Jos salasana ei vastaa annettua käyttäjätunnusta, ilmoittaa järjestelmä tästä
 
 ##### Kirjautumisen jälkeen
 
