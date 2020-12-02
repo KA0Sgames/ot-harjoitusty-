@@ -1,15 +1,17 @@
 package domain;
 
 import dao.CaventureDao;
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 public class Controller {
     private CaventureDao dao;
     private String loggedInUser;
+    private SessionInfo session;
     
     public Controller() {
         this.dao = new CaventureDao();
         this.loggedInUser = null;
+        this.session = null;
     }
     
     public void createDatabaseIfDoesntExist() {
@@ -36,7 +38,15 @@ public class Controller {
         return this.loggedInUser;
     }
     
-    public ArrayDeque<CharacterInfo> getCharacters(String username) {
+    public ArrayList<CharacterInfo> getCharacters(String username) {
         return this.dao.getCharacters(username);
+    }
+    
+    public void createSession(String character) {
+        this.session = new SessionInfo(character);
+    }
+    
+    public void eraseSession() {
+        this.session = null;
     }
 }

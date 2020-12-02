@@ -8,7 +8,7 @@ import domain.Player;
 import domain.CharacterInfo;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -128,18 +128,59 @@ public class Ui extends Application {
         characterPane.setVgap(10);
         characterPane.setHgap(10);
         
-        ArrayDeque<CharacterInfo> characters = this.controller.getCharacters(this.controller.getLoggedInUser());
-        int row = 0;
+        Button char1 = new Button("");
+        Button char2 = new Button("");
+        Button char3 = new Button("");
         
-        while (characters.size() > 0) {
+        ArrayList<CharacterInfo> characters = this.controller.getCharacters(this.controller.getLoggedInUser());
+        
+        CharacterInfo character1 = characters.get(0);
+        
+        int row = 1;
+        
+        // Couldn't figure out better way to add buttons for unfixed ammount of characters, since I had to name buttons for event handlers
+        // If the person in charge of going through the code had idea for better way, leave message to Labtool
+        if (!characters.isEmpty()) {
             CharacterInfo character = characters.removeFirst();
-            characterPane.add(new Button(character.getName()), 1, row);
+            char1.setText(character.getName());
+            characterPane.add(char1, 1, row);
             characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
             characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
+            
+            char1.setOnAction(e -> {
+                this.controller.createSession(character.getName());
+                stage.setScene(gameScene);
+            });
+            
             row++;
         }
         
-        if (row < 3) {
+        if (!characters.isEmpty()) {
+            CharacterInfo character = characters.removeFirst();
+            char2.setText(character.getName());
+            characterPane.add(char2, 1, row);
+            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
+            
+            char2.setOnAction(e -> {
+                this.controller.createSession(character.getName());
+                stage.setScene(gameScene);
+            });
+            
+            row++;
+        }
+        
+        if (!characters.isEmpty()) {
+            CharacterInfo character = characters.removeFirst();
+            char3.setText(character.getName());
+            characterPane.add(char3, 1, row);
+            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
+            
+            row++;
+        }
+        
+        if (row < 4) {
             TextField newCharName = new TextField();
             Button createNewChar = new Button("Create");
             
@@ -148,10 +189,26 @@ public class Ui extends Application {
             row++;
         }
         
-        characterPane.add(new Button("Logout"), 1, row);
+        Button logoutButton = new Button("Logout");
+        characterPane.add(logoutButton, 1, row);
         
         this.characterScene = new Scene(characterPane);
         
+        char1.setOnAction(e -> {
+                this.controller.createSession(char1.getText());
+                stage.setScene(gameScene);
+            });
+        
+        char2.setOnAction(e -> {
+                this.controller.createSession(char2.getText());
+                stage.setScene(gameScene);
+            });
+        
+        char3.setOnAction(e -> {
+                this.controller.createSession(char3.getText());
+                stage.setScene(gameScene);
+            });
+
         // game scene
         
         Pane screen = new Pane();

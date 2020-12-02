@@ -1,7 +1,7 @@
 package dao;
 
 import java.sql.*;
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 import domain.CharacterInfo;
 
 public class CaventureDao {
@@ -164,8 +164,8 @@ public class CaventureDao {
         return r.next();
     }
     
-    public ArrayDeque<CharacterInfo> getCharacters(String user) {
-        ArrayDeque<CharacterInfo> characters = new ArrayDeque<>();
+    public ArrayList<CharacterInfo> getCharacters(String user) {
+        ArrayList<CharacterInfo> characters = new ArrayList<>();
         
         Connection db = createConnection();
         
@@ -182,7 +182,7 @@ public class CaventureDao {
             
                 CharacterInfo character = new CharacterInfo(name, experience, gold);
             
-                characters.addLast(character);
+                characters.add(character);
             }
         
             db.close();
