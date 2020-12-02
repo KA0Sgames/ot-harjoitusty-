@@ -18,4 +18,5 @@
 |30.11.-20  | 3   |Ui nappien toiminnallisuuden määrittelemistä ja Daon yhdistäminen Controller luokalla |
 |1.12.-20   | 3   |Pajassa varmistus että Ui on ok. OpenVPN + VMware asennus ja jarrin toimivuuden testausta etätyöpöydällä, jonka yhteydessä paja-ohjaajan odottelua (tyhjässä pajazoomissa). |
 |           | 2   |Ui:n koodausta, character scenen luonti. |
-| yht       | 34  | |
+|2.12.-20   | 3   |Yritin saada character scenen Ui komponentit toimimaan. Loin SessionInfo luokan. Kirjoitin testejä SessionInfolle, sekä Controllerille |
+| yht       | 37  | |
