@@ -90,22 +90,30 @@ public class CaventureDao {
         }
     }
     
-    private int getUserId(String user) throws SQLException {
+    private int getUserId(String user) {
         if (!containsUser(user)) {
             return -1;
         }
         
         Connection db = createConnection();
         
-        PreparedStatement p = db.prepareStatement("SELECT Users.id FROM Users WHERE Users.username=?");
-        p.setString(1, user);
+        try {
+            PreparedStatement p = db.prepareStatement("SELECT Users.id FROM Users WHERE Users.username=?");
+            p.setString(1, user);
         
-        ResultSet r = p.executeQuery();
+            ResultSet r = p.executeQuery();
         
-        return r.getInt("id");
+            r.next();
+            int userId = r.getInt("id");
+            
+            db.close();
+            return userId;
+        } catch (SQLException e) {
+            return -1;
+        }
     }
     
-    public boolean addCharacter(String user, String name) throws SQLException {
+    public boolean addCharacter(String user, String name) {
         if (containsCharacter(name)) {
             return false;
         }
@@ -118,14 +126,18 @@ public class CaventureDao {
         
         Connection db = createConnection();
         
-        PreparedStatement addingCharacter = db.prepareStatement("INSERT INTO Characters (user_id, name) VALUES (?,?)");
-        addingCharacter.setInt(1, userId);
-        addingCharacter.setString(2, name);
+        try {
+            PreparedStatement addingCharacter = db.prepareStatement("INSERT INTO Characters (user_id, name) VALUES (?,?)");
+            addingCharacter.setInt(1, userId);
+            addingCharacter.setString(2, name);
         
-        addingCharacter.execute();
+            addingCharacter.execute();
         
-        db.close();
-        return true;
+            db.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
     public void updateCharacterExperience(String name, int experience) throws SQLException {
@@ -152,16 +164,20 @@ public class CaventureDao {
         db.close();
     }
     
-    private boolean containsCharacter(String name) throws SQLException {
+    private boolean containsCharacter(String name) {
         Connection db = createConnection();
         
-        PreparedStatement p = db.prepareStatement("SELECT Characters.name FROM Characters WHERE Characters.name=?");
-        p.setString(1, name);
+        try {
+            PreparedStatement p = db.prepareStatement("SELECT Characters.name FROM Characters WHERE Characters.name=?");
+            p.setString(1, name);
         
-        ResultSet r = p.executeQuery();
+            ResultSet r = p.executeQuery();
         
-        db.close();
-        return r.next();
+            db.close();
+            return r.next();
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
     public ArrayList<CharacterInfo> getCharacters(String user) {

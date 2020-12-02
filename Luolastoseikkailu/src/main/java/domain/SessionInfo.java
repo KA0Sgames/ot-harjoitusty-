@@ -1,13 +1,15 @@
 package domain;
 
 public class SessionInfo {
-    private String character;
-    private int collectedXP;
+    private final String character;
+    private int experience;
     private int collectedGold;
+    private final int previousGold;
     
-    public SessionInfo(String name) {
+    public SessionInfo(String name, int xp, int prevGold) {
         this.character = name;
-        this.collectedXP = 0;
+        this.experience = xp;
+        this.previousGold = prevGold;
         this.collectedGold = 0;
     }
     
@@ -16,15 +18,19 @@ public class SessionInfo {
     }
     
     public int getXP() {
-        return this.collectedXP;
+        return this.experience;
     }
     
-    public int getGold() {
+    public int getCollectedGold() {
         return this.collectedGold;
     }
     
+    public int getPrevGold() {
+        return this.previousGold;
+    }
+    
     public void addXP(int xp) {
-        this.collectedXP += xp;
+        this.experience += xp;
     }
     
     public void addGold(int gold) {

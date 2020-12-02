@@ -134,56 +134,46 @@ public class Ui extends Application {
         
         ArrayList<CharacterInfo> characters = this.controller.getCharacters(this.controller.getLoggedInUser());
         
-        CharacterInfo character1 = characters.get(0);
+        CharacterInfo character1 = null;
+        CharacterInfo character2 = null;
+        CharacterInfo character3 = null;
         
         int row = 1;
         
         // Couldn't figure out better way to add buttons for unfixed ammount of characters, since I had to name buttons for event handlers
         // If the person in charge of going through the code had idea for better way, leave message to Labtool
+        
         if (!characters.isEmpty()) {
-            CharacterInfo character = characters.removeFirst();
-            char1.setText(character.getName());
+            character1 = characters.get(0);
+            char1.setText(character1.getName());
             characterPane.add(char1, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
-            
-            char1.setOnAction(e -> {
-                this.controller.createSession(character.getName());
-                stage.setScene(gameScene);
-            });
-            
-            row++;
+            characterPane.add(new Label("XP: " + Integer.toString(character1.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character1.getGold())), 3, row);
+            row ++;
         }
         
-        if (!characters.isEmpty()) {
-            CharacterInfo character = characters.removeFirst();
-            char2.setText(character.getName());
+        if (characters.size() >= 2) {
+            character2 = characters.get(1);
+            char2.setText(character2.getName());
             characterPane.add(char2, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
-            
-            char2.setOnAction(e -> {
-                this.controller.createSession(character.getName());
-                stage.setScene(gameScene);
-            });
-            
+            characterPane.add(new Label("XP: " + Integer.toString(character2.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character2.getGold())), 3, row);
             row++;
         }
         
-        if (!characters.isEmpty()) {
-            CharacterInfo character = characters.removeFirst();
-            char3.setText(character.getName());
+        if (characters.size() >= 3) {
+            character3 = characters.get(2);
+            char3.setText(character3.getName());
             characterPane.add(char3, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character.getGold())), 3, row);
-            
+            characterPane.add(new Label("XP: " + Integer.toString(character3.getExperience())), 2, row);
+            characterPane.add(new Label("Gold: " + Integer.toString(character3.getGold())), 3, row);
             row++;
         }
+        
+        TextField newCharName = new TextField();
+        Button createNewChar = new Button("Create");
         
         if (row < 4) {
-            TextField newCharName = new TextField();
-            Button createNewChar = new Button("Create");
-            
             characterPane.add(newCharName, 1, row);
             characterPane.add(createNewChar, 2, row);
             row++;
@@ -194,8 +184,9 @@ public class Ui extends Application {
         
         this.characterScene = new Scene(characterPane);
         
+        /*  Help needed, these don't work: "local variables referenced from a lambda expression must be final or effectively final"
         char1.setOnAction(e -> {
-                this.controller.createSession(char1.getText());
+                this.controller.createSession(character1.getName(), character1.getExperience(), character1.getGold());
                 stage.setScene(gameScene);
             });
         
@@ -208,6 +199,16 @@ public class Ui extends Application {
                 this.controller.createSession(char3.getText());
                 stage.setScene(gameScene);
             });
+        */
+        
+        createNewChar.setOnAction(e -> {
+            this.controller.addCharacter(this.controller.getLoggedInUser(), newCharName.getText().trim());
+        });
+        
+        logoutButton.setOnAction(e -> {
+            this.controller.eraseSession();
+            stage.setScene(this.loginScene);
+        });
 
         // game scene
         

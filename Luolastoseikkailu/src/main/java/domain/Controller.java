@@ -42,8 +42,16 @@ public class Controller {
         return this.dao.getCharacters(username);
     }
     
-    public void createSession(String character) {
-        this.session = new SessionInfo(character);
+    public boolean addCharacter(String user, String character) {
+        return this.dao.addCharacter(user, character);
+    }
+    
+    public void createSession(String character, int xp, int gold) {
+        this.session = new SessionInfo(character, xp, gold);
+    }
+    
+    public SessionInfo getCurrentSession() {
+        return this.session;
     }
     
     public void eraseSession() {
