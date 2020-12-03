@@ -18,6 +18,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import domain.Controller;
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class Ui extends Application {
@@ -26,11 +29,37 @@ public class Ui extends Application {
     private Scene characterScene;
     private Scene gameScene;
     private Controller controller;
+    private VBox characterList;
     
+    
+    public Node createCharacterNode(Stage stage, CharacterInfo character) {
+        HBox characterBox = new HBox(10);
+        Button charButton = new Button(character.getName());
+        Label charXpInfo = new Label("XP: " + character.getExperience());
+        Label charGoldInfo = new Label("Gold: " + character.getGold());
+        
+        charButton.setOnAction(e -> {
+           this.controller.createSession(character.getName(), character.getExperience(), character.getGold());
+           stage.setScene(gameScene);
+        });
+        
+        characterBox.getChildren().addAll(charButton, charXpInfo, charGoldInfo);
+        return characterBox;
+    }
+    
+    public void redrawCharacterlist(Stage stage, String user) {
+        this.characterList.getChildren().clear();
+        
+        ArrayList<CharacterInfo> characters = this.controller.getCharacters(user);
+        characters.forEach(character -> {
+            this.characterList.getChildren().add(createCharacterNode(stage, character));
+        });
+    }
     
     @Override
     public void start(Stage stage) throws Exception {
         this.controller = new Controller();
+        this.characterList = new VBox();
         // login scene:
         
         GridPane loginPane = new GridPane();
@@ -122,94 +151,45 @@ public class Ui extends Application {
         
         // character scene:
         
-        GridPane characterPane = new GridPane();
+        VBox characterPane = new VBox();
         characterPane.setPrefSize(400, 300);
         characterPane.setPadding((new Insets(10)));
-        characterPane.setVgap(10);
-        characterPane.setHgap(10);
+        characterPane.setSpacing(10);
         
-        Button char1 = new Button("");
-        Button char2 = new Button("");
-        Button char3 = new Button("");
+        redrawCharacterlist(stage, this.controller.getLoggedInUser());
         
-        ArrayList<CharacterInfo> characters = this.controller.getCharacters(this.controller.getLoggedInUser());
+        int rows = this.characterList.getChildren().size();
         
-        CharacterInfo character1 = null;
-        CharacterInfo character2 = null;
-        CharacterInfo character3 = null;
-        
-        int row = 1;
-        
-        // Couldn't figure out better way to add buttons for unfixed ammount of characters, since I had to name buttons for event handlers
-        // If the person in charge of going through the code had idea for better way, leave message to Labtool
-        
-        if (!characters.isEmpty()) {
-            character1 = characters.get(0);
-            char1.setText(character1.getName());
-            characterPane.add(char1, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character1.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character1.getGold())), 3, row);
-            row ++;
-        }
-        
-        if (characters.size() >= 2) {
-            character2 = characters.get(1);
-            char2.setText(character2.getName());
-            characterPane.add(char2, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character2.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character2.getGold())), 3, row);
-            row++;
-        }
-        
-        if (characters.size() >= 3) {
-            character3 = characters.get(2);
-            char3.setText(character3.getName());
-            characterPane.add(char3, 1, row);
-            characterPane.add(new Label("XP: " + Integer.toString(character3.getExperience())), 2, row);
-            characterPane.add(new Label("Gold: " + Integer.toString(character3.getGold())), 3, row);
-            row++;
-        }
-        
+        HBox characterCreation = new HBox(10);
         TextField newCharName = new TextField();
-        Button createNewChar = new Button("Create");
-        
-        if (row < 4) {
-            characterPane.add(newCharName, 1, row);
-            characterPane.add(createNewChar, 2, row);
-            row++;
-        }
+        Button createCharacter = new Button("Create");
+        Label errorInCharCreation = new Label("");
+        characterCreation.getChildren().addAll(newCharName, createCharacter, errorInCreation);
+            
+        createCharacter.setOnAction(e -> {
+            if (newCharName.getText().trim().length() < 4) {
+                errorInCharCreation.setText("Character name too short, must be atleast 4 characters.");
+            } else {
+                this.controller.addCharacter(this.controller.getLoggedInUser(), newCharName.getText().trim());
+                redrawCharacterlist(stage, this.controller.getLoggedInUser());
+            }
+        });
         
         Button logoutButton = new Button("Logout");
-        characterPane.add(logoutButton, 1, row);
-        
-        this.characterScene = new Scene(characterPane);
-        
-        /*  Help needed, these don't work: "local variables referenced from a lambda expression must be final or effectively final"
-        char1.setOnAction(e -> {
-                this.controller.createSession(character1.getName(), character1.getExperience(), character1.getGold());
-                stage.setScene(gameScene);
-            });
-        
-        char2.setOnAction(e -> {
-                this.controller.createSession(char2.getText());
-                stage.setScene(gameScene);
-            });
-        
-        char3.setOnAction(e -> {
-                this.controller.createSession(char3.getText());
-                stage.setScene(gameScene);
-            });
-        */
-        
-        createNewChar.setOnAction(e -> {
-            this.controller.addCharacter(this.controller.getLoggedInUser(), newCharName.getText().trim());
-        });
         
         logoutButton.setOnAction(e -> {
             this.controller.eraseSession();
             stage.setScene(this.loginScene);
         });
-
+        
+        if (rows < 3) {
+            characterPane.getChildren().addAll(this.characterList, characterCreation, logoutButton);
+        } else {
+            characterPane.getChildren().addAll(this.characterList, logoutButton);
+        }
+        
+        this.characterScene = new Scene(characterPane);
+        
         // game scene
         
         Pane screen = new Pane();
