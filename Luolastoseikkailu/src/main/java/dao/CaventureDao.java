@@ -131,7 +131,7 @@ public class CaventureDao {
             addingCharacter.setInt(1, userId);
             addingCharacter.setString(2, name);
         
-            addingCharacter.execute();
+            addingCharacter.executeUpdate();
         
             db.close();
             return true;
@@ -186,7 +186,7 @@ public class CaventureDao {
         Connection db = createConnection();
         
         try {
-            PreparedStatement getCharacters = db.prepareStatement("SELECT Characters.name, Characters.experience, Characters.gold FROM Users, Characters WHERE Users.id=Characters.user_id AND Users.name=? ORDER BY Characters.name");
+            PreparedStatement getCharacters = db.prepareStatement("SELECT Characters.name, Characters.experience, Characters.gold FROM Users, Characters WHERE Users.id=Characters.user_id AND Users.username=? ORDER BY Characters.name");
             getCharacters.setString(1, user);
         
             ResultSet r = getCharacters.executeQuery();

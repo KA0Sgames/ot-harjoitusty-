@@ -31,6 +31,10 @@ public class Ui extends Application {
     private Controller controller;
     private VBox characterList;
     
+    public void init() throws Exception {
+        this.controller = new Controller();
+        this.characterList = new VBox();
+    }
     
     public Node createCharacterNode(Stage stage, CharacterInfo character) {
         HBox characterBox = new HBox(10);
@@ -51,6 +55,7 @@ public class Ui extends Application {
         this.characterList.getChildren().clear();
         
         ArrayList<CharacterInfo> characters = this.controller.getCharacters(user);
+        System.out.println(characters);
         characters.forEach(character -> {
             this.characterList.getChildren().add(createCharacterNode(stage, character));
         });
@@ -58,8 +63,8 @@ public class Ui extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        this.controller = new Controller();
-        this.characterList = new VBox();
+        //this.controller = new Controller();
+        //this.characterList = new VBox();
         // login scene:
         
         GridPane loginPane = new GridPane();
@@ -155,25 +160,33 @@ public class Ui extends Application {
         characterPane.setPrefSize(400, 300);
         characterPane.setPadding((new Insets(10)));
         characterPane.setSpacing(10);
-        
+        System.out.println(this.controller.getLoggedInUser());
         redrawCharacterlist(stage, this.controller.getLoggedInUser());
         
         int rows = this.characterList.getChildren().size();
-        
+
         HBox characterCreation = new HBox(10);
         TextField newCharName = new TextField();
         Button createCharacter = new Button("Create");
         Label errorInCharCreation = new Label("");
-        characterCreation.getChildren().addAll(newCharName, createCharacter, errorInCreation);
             
         createCharacter.setOnAction(e -> {
             if (newCharName.getText().trim().length() < 4) {
                 errorInCharCreation.setText("Character name too short, must be atleast 4 characters.");
+                errorInCharCreation.setTextFill(Color.RED);
             } else {
-                this.controller.addCharacter(this.controller.getLoggedInUser(), newCharName.getText().trim());
+                boolean succeeded = this.controller.addCharacter(this.controller.getLoggedInUser(), newCharName.getText().trim());
+                if (!succeeded) {
+                    errorInCharCreation.setText("Character with that name already exists.");
+                    errorInCharCreation.setTextFill(Color.RED);
+                }
+                System.out.println(this.controller.getLoggedInUser());
                 redrawCharacterlist(stage, this.controller.getLoggedInUser());
             }
         });
+        
+        
+        characterCreation.getChildren().addAll(newCharName, createCharacter, errorInCharCreation);
         
         Button logoutButton = new Button("Logout");
         
@@ -181,7 +194,7 @@ public class Ui extends Application {
             this.controller.eraseSession();
             stage.setScene(this.loginScene);
         });
-        
+        System.out.println(rows);
         if (rows < 3) {
             characterPane.getChildren().addAll(this.characterList, characterCreation, logoutButton);
         } else {

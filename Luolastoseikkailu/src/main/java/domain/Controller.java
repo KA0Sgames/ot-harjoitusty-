@@ -10,6 +10,7 @@ public class Controller {
     
     public Controller() {
         this.dao = new CaventureDao();
+        createDatabaseIfDoesntExist();
         this.loggedInUser = null;
         this.session = null;
     }
