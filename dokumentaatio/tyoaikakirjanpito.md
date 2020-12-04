@@ -19,4 +19,8 @@
 |1.12.-20   | 3   |Pajassa varmistus että Ui on ok. OpenVPN + VMware asennus ja jarrin toimivuuden testausta etätyöpöydällä, jonka yhteydessä paja-ohjaajan odottelua (tyhjässä pajazoomissa). |
 |           | 2   |Ui:n koodausta, character scenen luonti. |
 |2.12.-20   | 3   |Yritin saada character scenen Ui komponentit toimimaan. Loin SessionInfo luokan. Kirjoitin testejä SessionInfolle, sekä Controllerille |
-| yht       | 37  | |
+|3.12.-20   | 2   |Virheellisen koodin korjausyritystä pajassa. |
+|           | 2   |Character scenen täysi uudelleenkirjoittaminen Ui luokkaan, ei vielä toimiva versio. |
+|4.12.-20   | 2   |Bugin etsintää pajassa character sceneen liittyen, bugi paikallistettu CaventureDaoon. |
+|           | 2   |Character scenen bugi löydetty virheellisestä SQL updatesta ja korjattu. Pari uutta bugia havaittu. |
+| yht       | 45  | |

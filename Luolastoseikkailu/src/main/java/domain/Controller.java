@@ -35,6 +35,11 @@ public class Controller {
         this.loggedInUser = username;
     }
     
+    public void logOutUser() {
+        this.loggedInUser = null;
+        this.session = null;
+    }
+    
     public String getLoggedInUser() {
         return this.loggedInUser;
     }

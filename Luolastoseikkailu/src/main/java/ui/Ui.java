@@ -63,8 +63,6 @@ public class Ui extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        //this.controller = new Controller();
-        //this.characterList = new VBox();
         // login scene:
         
         GridPane loginPane = new GridPane();
@@ -181,6 +179,7 @@ public class Ui extends Application {
                     errorInCharCreation.setTextFill(Color.RED);
                 }
                 System.out.println(this.controller.getLoggedInUser());
+                newCharName.setText("");
                 redrawCharacterlist(stage, this.controller.getLoggedInUser());
             }
         });
@@ -191,7 +190,7 @@ public class Ui extends Application {
         Button logoutButton = new Button("Logout");
         
         logoutButton.setOnAction(e -> {
-            this.controller.eraseSession();
+            this.controller.logOutUser();
             stage.setScene(this.loginScene);
         });
         System.out.println(rows);
