@@ -24,4 +24,5 @@
 |4.12.-20   | 2   |Bugin etsintää pajassa character sceneen liittyen, bugi paikallistettu CaventureDaoon. |
 |           | 2   |Character scenen bugi löydetty virheellisestä SQL updatesta ja korjattu. Pari uutta bugia havaittu. |
 |5.12.-20   | 1   |Perinnän ja abstraktien luokkien kertaamista ohja materiaalista. |
-| yht       | 46  | |
+|           | 2   |Creature.java abstraktin luokan alustava koodaaminen, sekä Direction enumin lisäys. |
+| yht       | 48  | |
