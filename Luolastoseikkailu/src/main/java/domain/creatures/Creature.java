@@ -1,4 +1,4 @@
-package domain;
+package domain.creatures;
 
 import java.util.Random;
 
@@ -19,6 +19,8 @@ public abstract class Creature {
         this.maxHP = maxHP;
         this.HP = maxHP;
         this.target = null;
+        changeDirection();
+        this.directionCounter = 0;
     }
     
     public String getName() {

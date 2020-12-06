@@ -3,7 +3,7 @@ package domainTests;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import domain.Player;
+import domain.creatures.Player;
 
 public class PlayerTest {
     

@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import domain.Player;
+import domain.creatures.Player;
 import domain.CharacterInfo;
 import java.util.HashMap;
 import java.util.Map;
