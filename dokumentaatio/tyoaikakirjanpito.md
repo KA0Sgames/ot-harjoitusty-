@@ -25,4 +25,5 @@
 |           | 2   |Character scenen bugi löydetty virheellisestä SQL updatesta ja korjattu. Pari uutta bugia havaittu. |
 |5.12.-20   | 1   |Perinnän ja abstraktien luokkien kertaamista ohja materiaalista. |
 |           | 2   |Creature.java abstraktin luokan alustava koodaaminen, sekä Direction enumin lisäys. |
-| yht       | 48  | |
+|6.12.-20   | 1   |CreatureUpdater ja Spider luokkien luonti, sekä domain.creatures paketin luonti, sekä siihen liittyvien luokkien siirto sen alle. |
+| yht       | 49  | |
