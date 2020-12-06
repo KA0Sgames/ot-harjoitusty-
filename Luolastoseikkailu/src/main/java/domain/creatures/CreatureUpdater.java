@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain.creatures;
 
-/**
- *
- * @author KA0S
- */
+import java.util.ArrayList;
+
 public class CreatureUpdater {
+    private ArrayList<Creature> creatures;
     
+    public CreatureUpdater() {
+        this.creatures = new ArrayList<>();
+    }
+    
+    public void moveAll() {
+        for (Creature creature: this.creatures) {
+            creature.move();
+        }
+    }
+    
+    private void checkTargetDistance() {
+        
+    }
 }
