@@ -27,4 +27,5 @@
 |           | 2   |Creature.java abstraktin luokan alustava koodaaminen, sekä Direction enumin lisäys. |
 |6.12.-20   | 1   |CreatureUpdater ja Spider luokkien luonti, sekä domain.creatures paketin luonti, sekä siihen liittyvien luokkien siirto sen alle. |
 |8.12.-20   | 3   |Aloitus creaturejen lisääminen pelinäkymään. Samalla Ui:n muokkausta, jotta hahmot saa yhdistettyä polygoneihin. |
-| yht       | 52  | |
+|           | 1   |Creatureiden liikkumisen koodausta ja kohteen valinta. |
+| yht       | 53  | |
