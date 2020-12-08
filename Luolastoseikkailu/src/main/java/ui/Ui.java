@@ -277,6 +277,7 @@ public class Ui extends Application {
                 
                 playerPolygon.get(player).setTranslateX(player.getX());
                 playerPolygon.get(player).setTranslateY(player.getY());
+                
                 controller.UpdateCreatures();
                 
                 for (Creature creature: creatures.keySet()) {

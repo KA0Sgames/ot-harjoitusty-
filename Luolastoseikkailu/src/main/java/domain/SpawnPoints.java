@@ -12,13 +12,13 @@ public class SpawnPoints {
     }
     
     private void createList() {
-        this.spawnPoints.add(new SpawnPoint(150, 150));
-        this.spawnPoints.add(new SpawnPoint(170, 400));
-        this.spawnPoints.add(new SpawnPoint(230, 670));
+        this.spawnPoints.add(new SpawnPoint(370, 400));
+        this.spawnPoints.add(new SpawnPoint(430, 670));
         this.spawnPoints.add(new SpawnPoint(500, 250));
         this.spawnPoints.add(new SpawnPoint(690, 100));
         this.spawnPoints.add(new SpawnPoint(740, 620));
         this.spawnPoints.add(new SpawnPoint(900, 380));
+        this.spawnPoints.add(new SpawnPoint(1070, 180));
     }
     
     public SpawnPoint getRandomSpawn() {

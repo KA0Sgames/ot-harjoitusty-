@@ -2,8 +2,8 @@ package domain.creatures;
 
 public class Player extends Creature {
     
-    public Player(int id, int x, int y) {
-        super(id, "Player", x, y, 17);
+    public Player(int x, int y) {
+        super("Player", x, y, 17);
         
         // this.movement = new Point2D(0, 0);
     }

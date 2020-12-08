@@ -83,7 +83,7 @@ public class Controller {
         
         for (int i = 0; i < ammount; i++) {
             SpawnPoint spawn = this.spawnPoints.getRandomSpawn();
-            Spider spider = new Spider(this.nextCreatureId, spawn.getX(), spawn.getY());
+            Spider spider = new Spider(spawn.getX(), spawn.getY());
             this.nextCreatureId++;
             startCreatures.add(spider);
         }
@@ -101,11 +101,13 @@ public class Controller {
     }
     
     public Player initPlayer() {
-        this.player = new Player(0, 50, 400);
+        this.player = new Player(50, 400);
+        creatureUpdater.addPlayer(player);
         return this.player;
     }
     
     public void UpdateCreatures() {
+        this.creatureUpdater.checkTargetDistance();
         this.creatureUpdater.moveAll();
     }
 }

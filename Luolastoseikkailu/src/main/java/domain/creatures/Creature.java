@@ -3,7 +3,6 @@ package domain.creatures;
 import java.util.Random;
 
 public abstract class Creature {
-    private final int id;
     private final String name;
     private int x;
     private int y;
@@ -13,8 +12,7 @@ public abstract class Creature {
     private Creature target;
     private int directionCounter;
     
-    public Creature(int id, String name, int x, int y, int maxHP) {
-        this.id = id;
+    public Creature(String name, int x, int y, int maxHP) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -23,10 +21,6 @@ public abstract class Creature {
         this.target = null;
         changeDirection();
         this.directionCounter = 0;
-    }
-    
-    public int getId() {
-        return this.id;
     }
     
     public String getName() {
@@ -59,6 +53,10 @@ public abstract class Creature {
     
     public void setHP(int change) {
         this.HP += change;
+    }
+    
+    public void setTarget(Creature target) {
+        this.target = target;
     }
     
     public void move() {
@@ -128,9 +126,12 @@ public abstract class Creature {
             
             this.directionCounter += 1;
             
-            if (this.directionCounter == 150) {
+            if (this.directionCounter == 100) {
+                this.directionCounter = 0;
                 changeDirection();
             }
+        } else {
+            moveTowardsTarget();
         }
     }
     
@@ -163,6 +164,45 @@ public abstract class Creature {
             case 7:
                 this.direction = Direction.DOWNLEFT;
                 break;
+        }
+    }
+    
+    private void moveTowardsTarget() {
+        int distanceX = Math.abs(this.getX() - this.target.getX());
+        int distanceY = Math.abs(this.getY() - this.target.getY());
+        
+        if (this.getX() - this.target.getX() < 0) {
+            if (distanceX > distanceY * 2) {
+                this.x += 1;
+            } else if (distanceX < distanceY / 2) {
+                if (this.getY() - this.target.getY() < 0) {
+                    this.y += 1;
+                } else {
+                    this.y -= 1;
+                }
+            } else if (this.getY() - this.target.getY() < 0) {
+                this.x += 1;
+                this.y += 1;
+            } else {
+                this.x += 1;
+                this.y -= 1;
+            }
+        } else {
+            if (distanceX > distanceY * 2) {
+                this.x -= 1;
+            } else if (distanceX < distanceY / 2) {
+                if (this.getY() - this.target.getY() < 0) {
+                    this.y += 1;
+                } else {
+                    this.y -= 1;
+                }
+            } else if (this.getY() - this.target.getY() < 0) {
+                this.x -= 1;
+                this.y += 1;
+            } else {
+                this.x -= 1;
+                this.y -= 1;
+            }
         }
     }
 }
