@@ -2,6 +2,10 @@ package domain.creatures;
 
 import java.util.ArrayList;
 
+/**
+ * Class holds creatures in game and provides methods to update status of all creatures that are present
+ */
+
 public class CreatureUpdater {
     private Player player;
     private ArrayList<Creature> creatures;

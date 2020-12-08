@@ -1,5 +1,9 @@
 package ui;
 
+/**
+ * Class provides templates for creating polygons for each creature type
+ */
+
 import javafx.scene.shape.Polygon;
 
 public class Polygons {

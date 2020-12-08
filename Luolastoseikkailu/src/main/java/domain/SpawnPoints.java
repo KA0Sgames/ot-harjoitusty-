@@ -3,6 +3,11 @@ package domain;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Class defines possible points at game window where creatures may spawn (start at).
+ * Class also has method for generating random spawn point out of the possible points.
+ */
+
 public class SpawnPoints {
     private ArrayList<SpawnPoint> spawnPoints;
     
