@@ -25,39 +25,39 @@ public class PlayerTest {
     
     @Test
     public void xCoordinateCorrectlyAtStart() {
-        assertEquals(10.0, this.character.getCharacter().getTranslateX(), 0.01);
+        assertEquals(10, this.character.getX());
     }
     
     @Test
     public void yCoordinateCorrectlyAtStart() {
-        assertEquals(100.0, this.character.getCharacter().getTranslateY(), 0.01);
+        assertEquals(100, this.character.getY());
     }
     
     @Test
     public void moveLeftWorksCorrectly() {
         this.character.moveLeft();
         
-        assertEquals(9.0, this.character.getCharacter().getTranslateX(), 0.01);
+        assertEquals(9, this.character.getX());
     }
     
     @Test
     public void moreRightWorksCorrectly() {
         this.character.moveRight();
         
-        assertEquals(11.0, this.character.getCharacter().getTranslateX(), 0.01);
+        assertEquals(11, this.character.getX());
     }
     
     @Test
     public void moveUpWorksCorrectly() {
         this.character.moveUp();
         
-        assertEquals(99.0, this.character.getCharacter().getTranslateY(), 0.01);
+        assertEquals(99, this.character.getY());
     }
     
     @Test
     public void moveDownWorksCorrectly() {
         this.character.moveDown();
         
-        assertEquals(101.0, this.character.getCharacter().getTranslateY(), 0.01);
+        assertEquals(101, this.character.getY());
     }
 }
