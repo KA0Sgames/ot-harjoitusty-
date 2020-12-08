@@ -2,17 +2,29 @@ package domain;
 
 import dao.CaventureDao;
 import java.util.ArrayList;
+import java.util.Random;
+import domain.creatures.Creature;
+import domain.creatures.Spider;
+import domain.creatures.Player;
+import domain.creatures.CreatureUpdater;
 
 public class Controller {
     private CaventureDao dao;
     private String loggedInUser;
     private SessionInfo session;
+    private int nextCreatureId;
+    private SpawnPoints spawnPoints;
+    private Player player;
+    private CreatureUpdater creatureUpdater;
     
     public Controller() {
         this.dao = new CaventureDao();
         createDatabaseIfDoesntExist();
         this.loggedInUser = null;
         this.session = null;
+        this.nextCreatureId = 1;
+        this.spawnPoints = new SpawnPoints();
+        this.creatureUpdater = new CreatureUpdater();
     }
     
     public void createDatabaseIfDoesntExist() {
@@ -62,5 +74,38 @@ public class Controller {
     
     public void eraseSession() {
         this.session = null;
+    }
+    
+    private ArrayList<Creature> createStartCreatures() {
+        ArrayList<Creature> startCreatures = new ArrayList<>();
+        Random random = new Random();
+        int ammount = random.nextInt(4) + 1;
+        
+        for (int i = 0; i < ammount; i++) {
+            SpawnPoint spawn = this.spawnPoints.getRandomSpawn();
+            Spider spider = new Spider(this.nextCreatureId, spawn.getX(), spawn.getY());
+            this.nextCreatureId++;
+            startCreatures.add(spider);
+        }
+        
+        return startCreatures;
+    }
+    
+    public ArrayList<Creature> initGame() {
+        ArrayList<Creature> startCreatures = createStartCreatures();
+        for (Creature creature: startCreatures) {
+            this.creatureUpdater.addCreature(creature);
+        }
+        
+        return startCreatures;
+    }
+    
+    public Player initPlayer() {
+        this.player = new Player(0, 50, 400);
+        return this.player;
+    }
+    
+    public void UpdateCreatures() {
+        this.creatureUpdater.moveAll();
     }
 }

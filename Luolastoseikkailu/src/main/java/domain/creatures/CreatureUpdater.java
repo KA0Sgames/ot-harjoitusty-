@@ -9,6 +9,10 @@ public class CreatureUpdater {
         this.creatures = new ArrayList<>();
     }
     
+    public void addCreature(Creature creature) {
+        this.creatures.add(creature);
+    }
+    
     public void moveAll() {
         for (Creature creature: this.creatures) {
             creature.move();

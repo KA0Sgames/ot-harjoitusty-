@@ -1,37 +1,26 @@
 package domain.creatures;
 
-import javafx.scene.shape.Polygon;
-
-public class Player {
-    private Polygon character;
-    // private Point2D movement;
+public class Player extends Creature {
     
-    public Player(int x, int y) {
-        this.character = new Polygon(-10, 0, 0, -10, 10, 0, 5, 10, -5, 10);
-        this.character.setTranslateX(x);
-        this.character.setTranslateY(y);
+    public Player(int id, int x, int y) {
+        super(id, "Player", x, y, 17);
         
         // this.movement = new Point2D(0, 0);
     }
     
     public void moveLeft() {
-        this.character.setTranslateX(this.character.getTranslateX() - 1);
+        this.setX(this.getX() - 1);
     }
     
     public void moveRight() {
-        this.character.setTranslateX(this.character.getTranslateX() + 1);
+        this.setX(this.getX() + 1);
     }
     
     public void moveUp() {
-        this.character.setTranslateY(this.character.getTranslateY() - 1);
+        this.setY(this.getY() - 1);
     }
     
     public void moveDown() {
-        this.character.setTranslateY(this.character.getTranslateY() + 1);
+        this.setY(this.getY() + 1);
     }
-    
-    public Polygon getCharacter() {
-        return character;
-    }
-
 }

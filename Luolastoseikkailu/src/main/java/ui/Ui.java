@@ -22,6 +22,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import domain.creatures.Creature;
+import javafx.scene.shape.Polygon;
 
 public class Ui extends Application {
     private Scene loginScene;
@@ -30,10 +32,17 @@ public class Ui extends Application {
     private Scene gameScene;
     private Controller controller;
     private VBox characterList;
+    private Player player;
+    private HashMap<Player, Polygon> playerPolygon;
+    private HashMap<Creature, Polygon> creatures;
+    private Polygons polygons;
     
     public void init() throws Exception {
         this.controller = new Controller();
         this.characterList = new VBox();
+        this.playerPolygon = new HashMap<>();
+        this.creatures = new HashMap<>();
+        this.polygons = new Polygons();
     }
     
     public Node createCharacterNode(Stage stage, CharacterInfo character) {
@@ -207,9 +216,27 @@ public class Ui extends Application {
         Pane screen = new Pane();
         screen.setPrefSize(1200, 800);
         
-        Player player = new Player(50, 400);
+        this.player = this.controller.initPlayer();
+
+        this.playerPolygon.put(this.player, this.polygons.createPolygon(this.player.getName()));
         
-        screen.getChildren().add(player.getCharacter());
+        this.playerPolygon.get(this.player).setTranslateX(this.player.getX());
+        this.playerPolygon.get(this.player).setTranslateY(this.player.getY());
+        
+        screen.getChildren().add(this.playerPolygon.get(this.player));
+         
+        ArrayList<Creature> startCreatures = this.controller.initGame();
+        System.out.println("Start creatures: " + startCreatures);
+        for (Creature startCreature : startCreatures) {
+            Polygon portrait = this.polygons.createPolygon(startCreature.getName());
+            portrait.setTranslateX(startCreature.getX());
+            portrait.setTranslateY(startCreature.getY());
+            this.creatures.put(startCreature, portrait);
+        }
+           
+        for (Polygon portrait : this.creatures.values()) {
+            screen.getChildren().add(portrait);
+        }
         
         this.gameScene = new Scene(screen);
         stage.setTitle("Caventure");
@@ -230,6 +257,8 @@ public class Ui extends Application {
             
             @Override
             public void handle(long present) {
+                
+                
                 if (pressedKeys.getOrDefault(KeyCode.LEFT, Boolean.FALSE)) {
                     player.moveLeft();
                 }
@@ -244,6 +273,15 @@ public class Ui extends Application {
                 
                 if (pressedKeys.getOrDefault(KeyCode.DOWN, Boolean.FALSE)) {
                     player.moveDown();
+                }
+                
+                playerPolygon.get(player).setTranslateX(player.getX());
+                playerPolygon.get(player).setTranslateY(player.getY());
+                controller.UpdateCreatures();
+                
+                for (Creature creature: creatures.keySet()) {
+                    creatures.get(creature).setTranslateX(creature.getX());
+                    creatures.get(creature).setTranslateY(creature.getY());
                 }
             }
         }.start();

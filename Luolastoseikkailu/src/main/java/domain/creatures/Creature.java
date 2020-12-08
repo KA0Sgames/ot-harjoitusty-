@@ -3,6 +3,7 @@ package domain.creatures;
 import java.util.Random;
 
 public abstract class Creature {
+    private final int id;
     private final String name;
     private int x;
     private int y;
@@ -12,7 +13,8 @@ public abstract class Creature {
     private Creature target;
     private int directionCounter;
     
-    public Creature(String name, int x, int y, int maxHP) {
+    public Creature(int id, String name, int x, int y, int maxHP) {
+        this.id = id;
         this.name = name;
         this.x = x;
         this.y = y;
@@ -21,6 +23,10 @@ public abstract class Creature {
         this.target = null;
         changeDirection();
         this.directionCounter = 0;
+    }
+    
+    public int getId() {
+        return this.id;
     }
     
     public String getName() {
@@ -33,6 +39,14 @@ public abstract class Creature {
     
     public int getY() {
         return this.y;
+    }
+    
+    public void setX(int x) {
+        this.x = x;
+    }
+    
+    public void setY(int y) {
+        this.y = y;
     }
     
     public int getMaxHP() {
@@ -51,38 +65,70 @@ public abstract class Creature {
         if (target == null) {
             switch (this.direction) {
                 case UP:
-                    this.y -= 1;
+                    if (this.y > 5) {
+                        this.y -= 1;
+                    }
                     break;
                 case DOWN:
-                    this.y += 1;
+                    if (this.y < 795) {
+                        this.y += 1;
+                    }
                     break;
                 case RIGHT:
-                    this.x +=1;
+                    if (this.x < 1195) {
+                        this.x +=1;
+                    }
                     break;
                 case LEFT:
-                    this.x -= 1;
+                    if (this.x > 5) {
+                        this.x -= 1;
+                    }
                     break;
                 case UPRIGHT:
-                    this.x += 1;
-                    this.y -= 1;
+                    if (this.y > 5 && this.x < 1195) {
+                        this.x += 1;
+                        this.y -= 1;
+                    } else if (this.y > 5) {
+                        this.y -= 1;
+                    } else if (this.x < 1195) {
+                        this.x += 1;
+                    }
                     break;
                 case UPLEFT:
-                    this.x -= 1;
-                    this.y -= 1;
+                    if (this.y > 5 && this.x > 5) {
+                        this.x -= 1;
+                        this.y -= 1;
+                    } else if (this.y > 5) {
+                        this.y -= 1;
+                    } else if (this.x > 5) {
+                        this.x -= 1;
+                    }
                     break;
                 case DOWNRIGHT:
-                    this.x += 1;
-                    this.y += 1;
+                    if (this.y < 795 && this.x < 1195) {
+                        this.x += 1;
+                        this.y += 1;
+                    } else if (this.y < 795) {
+                        this.y += 1;
+                    } else if (this.x < 1195) {
+                        this.x += 1;
+                    }
                     break;
                 case DOWNLEFT:
-                    this.x -= 1;
-                    this.y += 1;
+                    if (this.y < 795 && this.x > 5) {
+                        this.x -= 1;
+                        this.y += 1;
+                    } else if (this.y < 795) {
+                        this.y += 1;
+                    } else if (this.x > 5) {
+                        this.x -= 1;
+                    }
                     break;
             }
             
             this.directionCounter += 1;
             
-            if (this.directionCounter == 10000) {
+            if (this.directionCounter == 150) {
                 changeDirection();
             }
         }
