@@ -105,6 +105,7 @@ public class Ui extends Application {
                 errorMessage.setTextFill(Color.RED);
             } else {
                 this.controller.logInUser(usernameInput.getText().trim());
+                redrawCharacterlist(stage, this.controller.getLoggedInUser());
                 errorMessage.setText("");
                 usernameInput.setText("");
                 passwordInput.setText("");
@@ -167,8 +168,7 @@ public class Ui extends Application {
         characterPane.setPrefSize(400, 300);
         characterPane.setPadding((new Insets(10)));
         characterPane.setSpacing(10);
-        System.out.println(this.controller.getLoggedInUser());
-        redrawCharacterlist(stage, this.controller.getLoggedInUser());
+        //redrawCharacterlist(stage, this.controller.getLoggedInUser());
         
         int rows = this.characterList.getChildren().size();
 

@@ -28,4 +28,5 @@
 |6.12.-20   | 1   |CreatureUpdater ja Spider luokkien luonti, sekä domain.creatures paketin luonti, sekä siihen liittyvien luokkien siirto sen alle. |
 |8.12.-20   | 3   |Aloitus creaturejen lisääminen pelinäkymään. Samalla Ui:n muokkausta, jotta hahmot saa yhdistettyä polygoneihin. |
 |           | 1   |Creatureiden liikkumisen koodausta ja kohteen valinta. |
-| yht       | 53  | |
+|10.12.-20  | 1   |Javadocin lisäys pomiin ja pajassa apuja bugin korjaamiseen, jossa Ui:n character sceneen siirryttäessä hahmolista tyhjä. |
+| yht       | 54  | |
