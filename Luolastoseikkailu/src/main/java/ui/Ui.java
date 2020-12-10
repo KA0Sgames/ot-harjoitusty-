@@ -168,7 +168,6 @@ public class Ui extends Application {
         characterPane.setPrefSize(400, 300);
         characterPane.setPadding((new Insets(10)));
         characterPane.setSpacing(10);
-        //redrawCharacterlist(stage, this.controller.getLoggedInUser());
         
         int rows = this.characterList.getChildren().size();
 
