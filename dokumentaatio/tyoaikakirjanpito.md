@@ -29,4 +29,5 @@
 |8.12.-20   | 3   |Aloitus creaturejen lisääminen pelinäkymään. Samalla Ui:n muokkausta, jotta hahmot saa yhdistettyä polygoneihin. |
 |           | 1   |Creatureiden liikkumisen koodausta ja kohteen valinta. |
 |10.12.-20  | 1   |Javadocin lisäys pomiin ja pajassa apuja bugin korjaamiseen, jossa Ui:n character sceneen siirryttäessä hahmolista tyhjä. |
-| yht       | 54  | |
+|12.12.-20  | 1   |CaventureDaon muokkaus jotta se saa konstruktorin parametrina tietokannan. Testien kirjoittamista CaventureDao:lle. |
+| yht       | 55  | |

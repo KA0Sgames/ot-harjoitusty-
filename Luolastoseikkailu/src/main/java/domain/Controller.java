@@ -18,7 +18,7 @@ public class Controller {
     private CreatureUpdater creatureUpdater;
     
     public Controller() {
-        this.dao = new CaventureDao();
+        this.dao = new CaventureDao("jdbc:sqlite:database.db");
         createDatabaseIfDoesntExist();
         this.loggedInUser = null;
         this.session = null;

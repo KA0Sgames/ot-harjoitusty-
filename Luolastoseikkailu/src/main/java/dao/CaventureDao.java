@@ -8,8 +8,8 @@ public class CaventureDao {
     
     private String database;
     
-    public CaventureDao() {
-        this.database = "jdbc:sqlite:database.db";
+    public CaventureDao(String database) {
+        this.database = database;
     }
     
     public void createDB() {
