@@ -45,6 +45,7 @@ public class CaventureDao {
             db.close();
         
         } catch (SQLException e) {
+            System.out.println("Exception in addUser: " + e);
             return false;
         }
         return true;
@@ -140,28 +141,56 @@ public class CaventureDao {
         }
     }
     
-    public void updateCharacterExperience(String name, int experience) throws SQLException {
+    public void updateCharacterExperience(String name, int experience) {
         Connection db = createConnection();
         
-        PreparedStatement updateCharacter = db.prepareStatement("UPDATE Characters SET Characters.experience=Characters.experience+? WHERE Characters.name=?");
-        updateCharacter.setInt(1, experience);
-        updateCharacter.setString(1, name);
+        try {
+            PreparedStatement updateCharacter = db.prepareStatement("UPDATE Characters SET experience=experience+? WHERE Characters.name=?");
+            updateCharacter.setInt(1, experience);
+            updateCharacter.setString(2, name);
         
-        updateCharacter.executeUpdate();
-        
-        db.close();
+            updateCharacter.executeUpdate();
+            
+            db.close();
+        } catch (SQLException e) {
+            System.out.println("SQLException in updateCharacterExperience: " + e);
+        }
     }
     
-    public void updateCharacterGold(String name, int gold) throws SQLException {
+    public void updateCharacterGold(String name, int gold) {
         Connection db = createConnection();
         
-        PreparedStatement updateCharacter = db.prepareStatement("UPDATE Characters SET Characters.gold=Characters.gold+? WHERE Characters.name=?");
+        try {
+        PreparedStatement updateCharacter = db.prepareStatement("UPDATE Characters SET gold=gold+? WHERE Characters.name=?");
         updateCharacter.setInt(1, gold);
-        updateCharacter.setString(1, name);
+        updateCharacter.setString(2, name);
         
         updateCharacter.executeUpdate();
         
         db.close();
+        } catch (SQLException e) {
+            
+        }
+    }
+    
+    public boolean removeCharacter(String name) {
+        if (!containsCharacter(name)) {
+            return false;
+        }
+        
+            Connection db = createConnection();
+        
+        try {
+            PreparedStatement charRemoval = db.prepareStatement("DELETE FROM Characters WHERE name=?");
+            charRemoval.setString(1, name);
+            
+            charRemoval.executeUpdate();
+            
+            db.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
     
     private boolean containsCharacter(String name) {
@@ -206,6 +235,22 @@ public class CaventureDao {
             return characters;
         }
         return characters;
+    }
+    
+    public void emptyTables() {
+        Connection db = createConnection();
+        
+        try {
+            PreparedStatement emptyCharacters = db.prepareStatement("DELETE FROM Characters");
+            emptyCharacters.executeUpdate();
+            
+            PreparedStatement emptyUsers = db.prepareStatement("DELETE FROM Users");
+            emptyUsers.executeUpdate();
+            
+            db.close();
+        } catch (SQLException e) {
+            System.out.println("SQLException in CaventureDao emptyTables(): " + e);
+        }
     }
 
     private Connection createConnection() {
