@@ -30,4 +30,5 @@
 |           | 1   |Creatureiden liikkumisen koodausta ja kohteen valinta. |
 |10.12.-20  | 1   |Javadocin lisäys pomiin ja pajassa apuja bugin korjaamiseen, jossa Ui:n character sceneen siirryttäessä hahmolista tyhjä. |
 |12.12.-20  | 1   |CaventureDaon muokkaus jotta se saa konstruktorin parametrina tietokannan. Testien kirjoittamista CaventureDao:lle. |
-| yht       | 55  | |
+|12.12.-20  | 2   |CaventureDao:n testien kirjoitusta ja muokkaus, että testit käyttävät testitietokantaa eikä muistia. CaventureDaossa virheellisten sql päivitysten korjaus. |
+| yht       | 57  | |
