@@ -38,7 +38,7 @@ public class Ui extends Application {
     private Polygons polygons;
     
     public void init() throws Exception {
-        this.controller = new Controller();
+        this.controller = new Controller("jdbc:sqlite:database.db");
         this.characterList = new VBox();
         this.playerPolygon = new HashMap<>();
         this.creatures = new HashMap<>();

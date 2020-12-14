@@ -16,15 +16,17 @@ public class Controller {
     private SpawnPoints spawnPoints;
     private Player player;
     private CreatureUpdater creatureUpdater;
+    private Random random;
     
-    public Controller() {
-        this.dao = new CaventureDao("jdbc:sqlite:database.db");
+    public Controller(String database) {
+        this.dao = new CaventureDao(database);
         createDatabaseIfDoesntExist();
         this.loggedInUser = null;
         this.session = null;
         this.nextCreatureId = 1;
         this.spawnPoints = new SpawnPoints();
         this.creatureUpdater = new CreatureUpdater();
+        this.random = new Random();
     }
     
     public void createDatabaseIfDoesntExist() {
@@ -37,6 +39,10 @@ public class Controller {
     
     public boolean askIfPasswordMatches(String user, String password) {
         return this.dao.passwordMatches(user, password);
+    }
+    
+    public void emptyDatabase() {
+        this.dao.emptyTables();
     }
     
     public boolean createUser(String username, String password) {
@@ -82,7 +88,7 @@ public class Controller {
         int ammount = random.nextInt(4) + 1;
         
         for (int i = 0; i < ammount; i++) {
-            SpawnPoint spawn = this.spawnPoints.getRandomSpawn();
+            SpawnPoint spawn = this.spawnPoints.getRandomSpawn(this.random);
             Spider spider = new Spider(spawn.getX(), spawn.getY());
             this.nextCreatureId++;
             startCreatures.add(spider);

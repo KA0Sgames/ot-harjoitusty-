@@ -26,9 +26,7 @@ public class SpawnPoints {
         this.spawnPoints.add(new SpawnPoint(1070, 180));
     }
     
-    public SpawnPoint getRandomSpawn() {
-        Random random = new Random();
-        
+    public SpawnPoint getRandomSpawn(Random random) {
         return this.spawnPoints.get(random.nextInt(this.spawnPoints.size()));
     }
 }

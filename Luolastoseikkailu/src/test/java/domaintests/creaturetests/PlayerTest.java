@@ -1,4 +1,4 @@
-package domaintests;
+package domaintests.creaturetests;
 
 import org.junit.Before;
 import org.junit.Test;
