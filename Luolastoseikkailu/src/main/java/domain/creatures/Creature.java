@@ -12,14 +12,14 @@ public abstract class Creature {
     private Creature target;
     private int directionCounter;
     
-    public Creature(String name, int x, int y, int maxHP) {
+    public Creature(String name, int x, int y, int maxHP, Random randomizer) {
         this.name = name;
         this.x = x;
         this.y = y;
         this.maxHP = maxHP;
         this.HP = maxHP;
         this.target = null;
-        changeDirection();
+        changeDirection(randomizer);
         this.directionCounter = 0;
     }
     
@@ -53,74 +53,54 @@ public abstract class Creature {
     
     public void setHP(int change) {
         this.HP += change;
+        
+        if (this.HP > this.maxHP) {
+            this.HP = this.maxHP;
+        }
+    }
+    
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+    
+    public Direction getDirection() {
+        return this.direction;
     }
     
     public void setTarget(Creature target) {
         this.target = target;
     }
     
-    public void move() {
+    public Creature getTarget() {
+        return this.target;
+    }
+    
+    public void move(Random randomizer) {
         if (target == null) {
             switch (this.direction) {
                 case UP:
-                    if (this.y > 5) {
-                        this.y -= 1;
-                    }
+                    moveUp();
                     break;
                 case DOWN:
-                    if (this.y < 795) {
-                        this.y += 1;
-                    }
+                    moveDown();
                     break;
                 case RIGHT:
-                    if (this.x < 1195) {
-                        this.x +=1;
-                    }
+                    moveRight();
                     break;
                 case LEFT:
-                    if (this.x > 5) {
-                        this.x -= 1;
-                    }
+                    moveLeft();
                     break;
                 case UPRIGHT:
-                    if (this.y > 5 && this.x < 1195) {
-                        this.x += 1;
-                        this.y -= 1;
-                    } else if (this.y > 5) {
-                        this.y -= 1;
-                    } else if (this.x < 1195) {
-                        this.x += 1;
-                    }
+                    moveUpRight();
                     break;
                 case UPLEFT:
-                    if (this.y > 5 && this.x > 5) {
-                        this.x -= 1;
-                        this.y -= 1;
-                    } else if (this.y > 5) {
-                        this.y -= 1;
-                    } else if (this.x > 5) {
-                        this.x -= 1;
-                    }
+                    moveUpLeft();
                     break;
                 case DOWNRIGHT:
-                    if (this.y < 795 && this.x < 1195) {
-                        this.x += 1;
-                        this.y += 1;
-                    } else if (this.y < 795) {
-                        this.y += 1;
-                    } else if (this.x < 1195) {
-                        this.x += 1;
-                    }
+                    moveDownRight();
                     break;
                 case DOWNLEFT:
-                    if (this.y < 795 && this.x > 5) {
-                        this.x -= 1;
-                        this.y += 1;
-                    } else if (this.y < 795) {
-                        this.y += 1;
-                    } else if (this.x > 5) {
-                        this.x -= 1;
-                    }
+                    moveDownLeft();
                     break;
             }
             
@@ -128,15 +108,14 @@ public abstract class Creature {
             
             if (this.directionCounter == 100) {
                 this.directionCounter = 0;
-                changeDirection();
+                changeDirection(randomizer);
             }
         } else {
             moveTowardsTarget();
         }
     }
     
-    private void changeDirection() {
-        Random directionRandomizer = new Random();
+    private void changeDirection(Random directionRandomizer) {
         int newDirection = directionRandomizer.nextInt(8);
         
         switch (newDirection) {
@@ -203,6 +182,74 @@ public abstract class Creature {
                 this.x -= 1;
                 this.y -= 1;
             }
+        }
+    }
+    
+    private void moveUp() {
+        if (this.y > 5) {
+            this.y -= 1;
+        }
+    }
+    
+    private void moveDown() {
+        if (this.y < 795) {
+            this.y += 1;
+        }
+    }
+    
+    private void moveRight() {
+        if (this.x < 1195) {
+            this.x +=1;
+        }
+    }
+    
+    private void moveLeft() {
+        if (this.x > 5) {
+            this.x -= 1;
+        }
+    }
+    
+    private void moveUpRight() {
+        if (this.y > 5 && this.x < 1195) {
+            this.x += 1;
+            this.y -= 1;
+        } else if (this.y > 5) {
+            this.y -= 1;
+        } else if (this.x < 1195) {
+            this.x += 1;
+        }
+    }
+    
+    private void moveUpLeft() {
+        if (this.y > 5 && this.x > 5) {
+            this.x -= 1;
+            this.y -= 1;
+        } else if (this.y > 5) {
+            this.y -= 1;
+        } else if (this.x > 5) {
+            this.x -= 1;
+        }
+    }
+    
+    private void moveDownRight() {
+        if (this.y < 795 && this.x < 1195) {
+            this.x += 1;
+            this.y += 1;
+        } else if (this.y < 795) {
+            this.y += 1;
+        } else if (this.x < 1195) {
+            this.x += 1;
+        }
+    }
+    
+    private void moveDownLeft() {
+        if (this.y < 795 && this.x > 5) {
+            this.x -= 1;
+            this.y += 1;
+        } else if (this.y < 795) {
+            this.y += 1;
+        } else if (this.x > 5) {
+            this.x -= 1;
         }
     }
 }

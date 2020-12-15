@@ -1,9 +1,11 @@
 package domain.creatures;
 
+import java.util.Random;
+
 public class Player extends Creature {
     
-    public Player(int x, int y) {
-        super("Player", x, y, 17);
+    public Player(int x, int y, Random random) {
+        super("Player", x, y, 17, random);
         
         // this.movement = new Point2D(0, 0);
     }

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import domain.creatures.Player;
+import java.util.Random;
 
 public class PlayerTest {
     
@@ -15,7 +16,7 @@ public class PlayerTest {
     
     @Before
     public void setUp() {
-        this.character = new Player(10, 100);
+        this.character = new Player(10, 100, new Random(1337));
     }
     
     @Test

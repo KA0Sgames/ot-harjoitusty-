@@ -1,6 +1,7 @@
 package domain.creatures;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class holds creatures in game and provides methods to update status of all creatures that are present
@@ -11,20 +12,30 @@ public class CreatureUpdater {
     private ArrayList<Creature> creatures;
     
     public CreatureUpdater() {
+        this.player = null;
         this.creatures = new ArrayList<>();
+        
     }
     
     public void addPlayer(Player player) {
         this.player = player;
     }
     
+    public Player getPlayer() {
+        return this.player;
+    }
+    
     public void addCreature(Creature creature) {
         this.creatures.add(creature);
     }
     
-    public void moveAll() {
+    public ArrayList<Creature> getCreatures() {
+        return this.creatures;
+    }
+    
+    public void moveAll(Random randomizer) {
         for (Creature creature: this.creatures) {
-            creature.move();
+            creature.move(randomizer);
         }
     }
     

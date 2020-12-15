@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import domain.creatures.Creature;
 import javafx.scene.shape.Polygon;
+import java.util.Random;
 
 public class Ui extends Application {
     private Scene loginScene;
@@ -38,7 +39,7 @@ public class Ui extends Application {
     private Polygons polygons;
     
     public void init() throws Exception {
-        this.controller = new Controller("jdbc:sqlite:database.db");
+        this.controller = new Controller("jdbc:sqlite:database.db", new Random());
         this.characterList = new VBox();
         this.playerPolygon = new HashMap<>();
         this.creatures = new HashMap<>();

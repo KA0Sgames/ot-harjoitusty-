@@ -12,21 +12,19 @@ public class Controller {
     private CaventureDao dao;
     private String loggedInUser;
     private SessionInfo session;
-    private int nextCreatureId;
     private SpawnPoints spawnPoints;
     private Player player;
     private CreatureUpdater creatureUpdater;
     private Random random;
     
-    public Controller(String database) {
+    public Controller(String database, Random random) {
         this.dao = new CaventureDao(database);
         createDatabaseIfDoesntExist();
         this.loggedInUser = null;
         this.session = null;
-        this.nextCreatureId = 1;
         this.spawnPoints = new SpawnPoints();
         this.creatureUpdater = new CreatureUpdater();
-        this.random = new Random();
+        this.random = random;
     }
     
     public void createDatabaseIfDoesntExist() {
@@ -84,13 +82,11 @@ public class Controller {
     
     private ArrayList<Creature> createStartCreatures() {
         ArrayList<Creature> startCreatures = new ArrayList<>();
-        Random random = new Random();
-        int ammount = random.nextInt(4) + 1;
+        int ammount = this.random.nextInt(4) + 1;
         
         for (int i = 0; i < ammount; i++) {
             SpawnPoint spawn = this.spawnPoints.getRandomSpawn(this.random);
-            Spider spider = new Spider(spawn.getX(), spawn.getY());
-            this.nextCreatureId++;
+            Spider spider = new Spider(spawn.getX(), spawn.getY(), this.random);
             startCreatures.add(spider);
         }
         
@@ -107,13 +103,17 @@ public class Controller {
     }
     
     public Player initPlayer() {
-        this.player = new Player(50, 400);
-        creatureUpdater.addPlayer(player);
+        this.player = new Player(50, 400, this.random);
+        this.creatureUpdater.addPlayer(player);
         return this.player;
     }
     
     public void UpdateCreatures() {
         this.creatureUpdater.checkTargetDistance();
-        this.creatureUpdater.moveAll();
+        this.creatureUpdater.moveAll(this.random);
+    }
+    
+    public CreatureUpdater getCreatureUpdater() {
+        return this.creatureUpdater;
     }
 }
