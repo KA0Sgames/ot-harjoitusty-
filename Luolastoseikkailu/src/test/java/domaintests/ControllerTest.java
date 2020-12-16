@@ -192,7 +192,7 @@ public class ControllerTest {
     public void updateCreaturesMovesCreatures() {
         this.controller.initPlayer();
         this.controller.initGame();
-        this.controller.UpdateCreatures();
+        this.controller.updateCreatures();
         
         assertEquals(431, this.controller.getCreatureUpdater().getCreatures().get(0).getX());
     }
@@ -201,7 +201,7 @@ public class ControllerTest {
     public void updateCreaturesChecksTargetsCorrectly1() {
         this.controller.initPlayer();
         this.controller.initGame();
-        this.controller.UpdateCreatures();
+        this.controller.updateCreatures();
         
         assertTrue(this.controller.getCreatureUpdater().getCreatures().get(0).getTarget()==null);
     }
@@ -211,7 +211,7 @@ public class ControllerTest {
         this.controller.initPlayer();
         this.controller.getCreatureUpdater().addCreature(new Spider(60, 450, new Random(1337)));
         
-        this.controller.UpdateCreatures();
+        this.controller.updateCreatures();
         
         assertFalse(this.controller.getCreatureUpdater().getCreatures().get(0).getTarget()==null);
     }

@@ -3,7 +3,7 @@ package domain.creatures;
 import java.util.Random;
 
 /**
- * Class defines Spider creature
+ * Class defines Spider creature.
  */
 
 public class Spider extends Creature {

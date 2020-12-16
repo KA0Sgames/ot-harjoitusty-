@@ -1,7 +1,7 @@
 package domain;
 
 /**
- * Class works as a container when moving character info from database to game logic
+ * Class works as a container when moving character info from database to game logic.
  */
 
 public class CharacterInfo {

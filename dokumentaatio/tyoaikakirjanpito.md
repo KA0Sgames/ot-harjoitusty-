@@ -33,4 +33,5 @@
 |12.12.-20  | 2   |CaventureDao:n testien kirjoitusta ja muokkaus, että testit käyttävät testitietokantaa eikä muistia. CaventureDaossa virheellisten sql päivitysten korjaus. |
 |13.12.-20  | 1   |Testien kirjoittelua. |
 |15.12.-20  | 4   |Testien kirjoittelua ja koodin siivousta. |
-| yht       | 62  | |
+|16.12.-20  | 3   |Checkstyle virheiden korjausta ja koodin siivoamista. JavaDocin lisäys checkstyleen. Javadocin kirjoitus CaventureDao luokalle. |
+| yht       | 65  | |

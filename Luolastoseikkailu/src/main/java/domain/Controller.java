@@ -108,7 +108,7 @@ public class Controller {
         return this.player;
     }
     
-    public void UpdateCreatures() {
+    public void updateCreatures() {
         this.creatureUpdater.checkTargetDistance();
         this.creatureUpdater.moveAll(this.random);
     }

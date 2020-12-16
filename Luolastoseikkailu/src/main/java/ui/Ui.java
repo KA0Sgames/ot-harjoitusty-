@@ -65,7 +65,6 @@ public class Ui extends Application {
         this.characterList.getChildren().clear();
         
         ArrayList<CharacterInfo> characters = this.controller.getCharacters(user);
-        System.out.println(characters);
         characters.forEach(character -> {
             this.characterList.getChildren().add(createCharacterNode(stage, character));
         });
@@ -202,7 +201,6 @@ public class Ui extends Application {
             this.controller.logOutUser();
             stage.setScene(this.loginScene);
         });
-        System.out.println(rows);
         if (rows < 3) {
             characterPane.getChildren().addAll(this.characterList, characterCreation, logoutButton);
         } else {
@@ -226,7 +224,6 @@ public class Ui extends Application {
         screen.getChildren().add(this.playerPolygon.get(this.player));
          
         ArrayList<Creature> startCreatures = this.controller.initGame();
-        System.out.println("Start creatures: " + startCreatures);
         for (Creature startCreature : startCreatures) {
             Polygon portrait = this.polygons.createPolygon(startCreature.getName());
             portrait.setTranslateX(startCreature.getX());
@@ -278,7 +275,7 @@ public class Ui extends Application {
                 playerPolygon.get(player).setTranslateX(player.getX());
                 playerPolygon.get(player).setTranslateY(player.getY());
                 
-                controller.UpdateCreatures();
+                controller.updateCreatures();
                 
                 for (Creature creature: creatures.keySet()) {
                     creatures.get(creature).setTranslateX(creature.getX());

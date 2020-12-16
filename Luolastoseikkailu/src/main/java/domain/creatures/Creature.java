@@ -7,7 +7,7 @@ public abstract class Creature {
     private int x;
     private int y;
     private final int maxHP;
-    private int HP;
+    private int health;
     private Direction direction;
     private Creature target;
     private int directionCounter;
@@ -17,7 +17,7 @@ public abstract class Creature {
         this.x = x;
         this.y = y;
         this.maxHP = maxHP;
-        this.HP = maxHP;
+        this.health = maxHP;
         this.target = null;
         changeDirection(randomizer);
         this.directionCounter = 0;
@@ -48,14 +48,14 @@ public abstract class Creature {
     }
     
     public int getHP() {
-        return this.HP;
+        return this.health;
     }
     
     public void setHP(int change) {
-        this.HP += change;
+        this.health += change;
         
-        if (this.HP > this.maxHP) {
-            this.HP = this.maxHP;
+        if (this.health > this.maxHP) {
+            this.health = this.maxHP;
         }
     }
     
@@ -77,32 +77,7 @@ public abstract class Creature {
     
     public void move(Random randomizer) {
         if (target == null) {
-            switch (this.direction) {
-                case UP:
-                    moveUp();
-                    break;
-                case DOWN:
-                    moveDown();
-                    break;
-                case RIGHT:
-                    moveRight();
-                    break;
-                case LEFT:
-                    moveLeft();
-                    break;
-                case UPRIGHT:
-                    moveUpRight();
-                    break;
-                case UPLEFT:
-                    moveUpLeft();
-                    break;
-                case DOWNRIGHT:
-                    moveDownRight();
-                    break;
-                case DOWNLEFT:
-                    moveDownLeft();
-                    break;
-            }
+            moveToRandomDirection();
             
             this.directionCounter += 1;
             
@@ -146,41 +121,66 @@ public abstract class Creature {
         }
     }
     
+    private void moveToRandomDirection() {
+        switch (this.direction) {
+            case UP:
+                moveUp();
+                break;
+            case DOWN:
+                moveDown();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case LEFT:
+                moveLeft();
+                break;
+            case UPRIGHT:
+                moveUpRight();
+                break;
+            case UPLEFT:
+                moveUpLeft();
+                break;
+            case DOWNRIGHT:
+                moveDownRight();
+                break;
+            case DOWNLEFT:
+                moveDownLeft();
+                break;
+        }
+    }
+    
     private void moveTowardsTarget() {
         int distanceX = Math.abs(this.getX() - this.target.getX());
         int distanceY = Math.abs(this.getY() - this.target.getY());
         
         if (this.getX() - this.target.getX() < 0) {
             if (distanceX > distanceY * 2) {
-                this.x += 1;
+                moveRight();
             } else if (distanceX < distanceY / 2) {
                 if (this.getY() - this.target.getY() < 0) {
-                    this.y += 1;
+                    moveDown();
                 } else {
-                    this.y -= 1;
+                    moveUp();
                 }
             } else if (this.getY() - this.target.getY() < 0) {
-                this.x += 1;
-                this.y += 1;
+                moveDownRight();
             } else {
-                this.x += 1;
-                this.y -= 1;
+                moveUpRight();
             }
         } else {
             if (distanceX > distanceY * 2) {
-                this.x -= 1;
+                moveLeft();
             } else if (distanceX < distanceY / 2) {
                 if (this.getY() - this.target.getY() < 0) {
-                    this.y += 1;
+                    moveDown();
                 } else {
-                    this.y -= 1;
+                    moveUp();
                 }
             } else if (this.getY() - this.target.getY() < 0) {
-                this.x -= 1;
-                this.y += 1;
+                moveDownLeft();
             } else {
-                this.x -= 1;
-                this.y -= 1;
+                moveUpLeft();
             }
         }
     }
@@ -199,7 +199,7 @@ public abstract class Creature {
     
     private void moveRight() {
         if (this.x < 1195) {
-            this.x +=1;
+            this.x += 1;
         }
     }
     

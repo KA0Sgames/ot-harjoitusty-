@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Class holds creatures in game and provides methods to update status of all creatures that are present
+ * Class holds creatures in game and provides methods to update status of all creatures that are present.
  */
 
 public class CreatureUpdater {
