@@ -153,6 +153,18 @@ public class ControllerTest {
     }
     
     @Test
+    public void removeCharacterWorksCorrectly() {
+        this.controller.createUser("Jack", "password");
+        this.controller.addCharacter("Jack", "Roger");
+        
+        assertEquals("Roger", this.controller.getCharacters("Jack").get(0).getName());
+        
+        this.controller.removeCharacter("Roger");
+        
+        assertTrue(this.controller.getCharacters("Jack").isEmpty());
+    }
+    
+    @Test
     public void initPlayerReturnsCorrectPlayer() {
         Player player = this.controller.initPlayer();
         

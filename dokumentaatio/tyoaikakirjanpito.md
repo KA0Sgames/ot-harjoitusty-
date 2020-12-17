@@ -34,4 +34,5 @@
 |13.12.-20  | 1   |Testien kirjoittelua. |
 |15.12.-20  | 4   |Testien kirjoittelua ja koodin siivousta. |
 |16.12.-20  | 3   |Checkstyle virheiden korjausta ja koodin siivoamista. JavaDocin lisäys checkstyleen. Javadocin kirjoitus CaventureDao luokalle. |
-| yht       | 65  | |
+|17.12.-20  | 1   |Hahmon poistonapin/toiminnallisuuden lisäys, sekä Controllerille testin kirjoitus tätä varten. Korjattu bugi että käyttäjän oli mahdollisuus luoda yli 3 hahmoa. |
+| yht       | 66  | |
