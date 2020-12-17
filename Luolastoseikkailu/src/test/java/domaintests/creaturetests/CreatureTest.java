@@ -402,13 +402,4 @@ public class CreatureTest {
         assertEquals(1195, this.creature.getX());
         assertEquals(795, this.creature.getY());
     }
-    
-    @Test
-    public void creaturesMoveCorrectlyWithoutTarget() {
-        this.creature.setDirection(Direction.UPRIGHT);
-        this.creature.move(random);
-        
-        assertEquals(51, this.creature.getX());
-        assertEquals(59, this.creature.getY());
-    }
 }
