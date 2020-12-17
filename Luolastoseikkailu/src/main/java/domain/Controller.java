@@ -68,6 +68,10 @@ public class Controller {
         return this.dao.addCharacter(user, character);
     }
     
+    public boolean removeCharacter(String name) {
+        return this.dao.removeCharacter(name);
+    }
+    
     public void createSession(String character, int xp, int gold) {
         this.session = new SessionInfo(character, xp, gold);
     }

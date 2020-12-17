@@ -51,13 +51,19 @@ public class Ui extends Application {
         Button charButton = new Button(character.getName());
         Label charXpInfo = new Label("XP: " + character.getExperience());
         Label charGoldInfo = new Label("Gold: " + character.getGold());
+        Button deleteButton = new Button("Delete");
         
         charButton.setOnAction(e -> {
            this.controller.createSession(character.getName(), character.getExperience(), character.getGold());
            stage.setScene(gameScene);
         });
         
-        characterBox.getChildren().addAll(charButton, charXpInfo, charGoldInfo);
+        deleteButton.setOnAction(e -> {
+            this.controller.removeCharacter(character.getName());
+            redrawCharacterlist(stage, this.controller.getLoggedInUser());
+        });
+        
+        characterBox.getChildren().addAll(charButton, charXpInfo, charGoldInfo, deleteButton);
         return characterBox;
     }
     
@@ -168,8 +174,6 @@ public class Ui extends Application {
         characterPane.setPrefSize(400, 300);
         characterPane.setPadding((new Insets(10)));
         characterPane.setSpacing(10);
-        
-        int rows = this.characterList.getChildren().size();
 
         HBox characterCreation = new HBox(10);
         TextField newCharName = new TextField();
@@ -177,7 +181,10 @@ public class Ui extends Application {
         Label errorInCharCreation = new Label("");
             
         createCharacter.setOnAction(e -> {
-            if (newCharName.getText().trim().length() < 4) {
+            if (this.characterList.getChildren().size() >= 3) {
+                errorInCharCreation.setText("Too many characters. Each user is limited to 3 characters.");
+                errorInCharCreation.setTextFill(Color.RED);
+            } else if (newCharName.getText().trim().length() < 4) {
                 errorInCharCreation.setText("Character name too short, must be atleast 4 characters.");
                 errorInCharCreation.setTextFill(Color.RED);
             } else {
@@ -186,8 +193,8 @@ public class Ui extends Application {
                     errorInCharCreation.setText("Character with that name already exists.");
                     errorInCharCreation.setTextFill(Color.RED);
                 }
-                System.out.println(this.controller.getLoggedInUser());
                 newCharName.setText("");
+                errorInCharCreation.setText("");
                 redrawCharacterlist(stage, this.controller.getLoggedInUser());
             }
         });
@@ -201,11 +208,8 @@ public class Ui extends Application {
             this.controller.logOutUser();
             stage.setScene(this.loginScene);
         });
-        if (rows < 3) {
+
             characterPane.getChildren().addAll(this.characterList, characterCreation, logoutButton);
-        } else {
-            characterPane.getChildren().addAll(this.characterList, logoutButton);
-        }
         
         this.characterScene = new Scene(characterPane);
         
