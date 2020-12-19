@@ -35,25 +35,28 @@ kirjautumisen yhteydessä hahmon valinta/luonti näkymään, josta hahmon valits
 
 ##### Kirjautumisen jälkeen
 
-- [ ] Käyttäjä näkee omat hahmonsa
+- [x] Käyttäjä näkee omat hahmonsa
 
-- [ ] Käyttäjä voi luoda uuden hahmon
+- [x] Käyttäjä voi luoda uuden hahmon
 
-  * [ ] Jos käyttäjällä on jo kolme luotua hahmoa, niin järjestelmä ilmoittaa, ettei uutta voida luoda poistamatta jotain
+  * [x] Jos käyttäjällä on jo kolme luotua hahmoa, niin järjestelmä ilmoittaa, ettei uutta voida luoda poistamatta jotain
 aikaisemmista hahmoista
-  * [ ] Käyttäjän hahmot näkyvät ainoastaan käyttäjälle itselleen
-  * [ ] Käyttäjä voi valita hahmon ja siirtyä pelaamaan sillä
+  * [x] Käyttäjä voi luoda vain hahmon jolla on uniikki nimi ja nimen pituus on vähintään neljä merkkiä. Käyttäjälle ilmoitetaan mikäli näin ei ole.
+- [x] Käyttäjän hahmot näkyvät ainoastaan käyttäjälle itselleen
+- [x] Käyttäjä voi valita hahmon ja siirtyä pelaamaan sillä
+- [x] Käyttäjä voi poistaa oman olemassa olevan hahmonsa
 
 ##### Hahmon valinnan jälkeen
 
 - Käyttäjä voi pelata peliä
   * [x] Käyttäjän hahmo voi liikkua luolastossa
   * [ ] Käyttäjän hahmo voi taistella hirviöitä vastaan
-  * [ ] Mikäli käyttäjän hahmo liikkuu tietylle etäisyydelle hirviöstä, se ottaa hahmon kohteekseen ja liikkuu hahmoa
+  * [x] Mikäli käyttäjän hahmo liikkuu tietylle etäisyydelle hirviöstä, se ottaa hahmon kohteekseen ja liikkuu hahmoa
 kohden hyökätäkseen
   * [ ] Hahmo ansaitsee kokemuspisteitä tehdessään vahinkoa hirviöihin
   * [ ] Kokemustasot vaikuttavat hahmon tekemään vahinkoon
-  * [ ] Luolastossa on satunnainen määrä hirviöitä ja niitä ilmestyy lisää tiettyyn lukumäärään asti satunnaisin väliajoin
+  * [x] Luolastossa on alussa satunnainen määrä hirviöitä
+  * [ ] Hirviöitä ilmestyy lisää tiettyyn lukumäärään asti satunnaisin väliajoin
   * [ ] Hahmo voi tallentaa kehityksensä (kokemuspisteet), mikäli ei ole taistelussa, eli ei ole minkään hirviön kohteena
   * [ ] Hahmo voi kuolla, jolloin se menettää keräämänsä kokemuksen edellisen tallennuksen jälkeen
   * [ ] Hahmon kuollessa palataan hahmon valitsemisvalikkoon

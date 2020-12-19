@@ -2,6 +2,11 @@ package domain.creatures;
 
 import java.util.Random;
 
+/**
+ * Abstract class describing common attributes and functionality between all child classes of creature.
+ * Serves as a basic template for monsters at the game.
+ */
+
 public abstract class Creature {
     private final String name;
     private int x;
@@ -12,6 +17,14 @@ public abstract class Creature {
     private Creature target;
     private int directionCounter;
     
+    /**
+     * Constructor called from child class constructors to set basic attributes of all monsters.
+     * @param name name distinguishing different type of creatures from each other, for example spider.
+     * @param x creatures starting points x-coordinate.
+     * @param y creatures starting points y-coordinate.
+     * @param maxHP creatures maximum amount of health points. When health attribute is equal to maxHP, creature is in perfect health.
+     * @param randomizer Random object used for picking arbitrary first moving direction. 
+     */
     public Creature(String name, int x, int y, int maxHP, Random randomizer) {
         this.name = name;
         this.x = x;
@@ -23,34 +36,66 @@ public abstract class Creature {
         this.directionCounter = 0;
     }
     
+    /**
+     * Getter for retrieving creatures name (type in game).
+     * @return returns creatures name (type in game) as String.
+     */
     public String getName() {
         return this.name;
     }
     
+    /**
+     * Getter for retrieving creatures current x-coordinate on game screen.
+     * @return integer value of x-coordinate of creatures current position on game screen.
+     */
     public int getX() {
         return this.x;
     }
     
+    /**
+     * Getter for retrieving creatures current y-coordinate on game screen.
+     * @return integer value of y-coordinate of creatures current position on game screen.
+     */
     public int getY() {
         return this.y;
     }
     
+    /**
+     * Setter to specify an x-coordinate where to move creature. Mainly used in tests.
+     * @param x new integer value for x-coordinate describing position of the creature.
+     */
     public void setX(int x) {
         this.x = x;
     }
     
+    /**
+     * Setter to specify an y-coordinate where to move creature. Mainly used in tests.
+     * @param y new integer value for y-coordinate describing position of the creature.
+     */
     public void setY(int y) {
         this.y = y;
     }
     
+    /**
+     * Getter to retrieve amount of maximum health points of the creature.
+     * @return amount of maximum health points of the creature.
+     */
     public int getMaxHP() {
         return this.maxHP;
     }
     
+    /**
+     * Getter to retrieve amount of current health points of the creature.
+     * @return amount of current health points of the creature.
+     */
     public int getHP() {
         return this.health;
     }
     
+    /**
+     * Method to modify creatures current health points. If health points are attempted to set over maximum health points, they are set equal to maximum.
+     * @param change amount of health points added to current health points. Negative values lower current health points.
+     */
     public void setHP(int change) {
         this.health += change;
         
@@ -59,22 +104,42 @@ public abstract class Creature {
         }
     }
     
+    /**
+     * Setter to specify certain direction into which creature will move on next move command if it has no target.
+     * @param direction Direction enum specifying moving direction.
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
     
+    /**
+     * Getter to retrieve next moving direction unless altered before moving command in the case that creature has no target.
+     * @return Direction enum describing next moving direction.
+     */
     public Direction getDirection() {
         return this.direction;
     }
     
+    /**
+     * Setter to specify target creature which this creature approaches and tries to attack.
+     * @param target Creature which this creature will move towards and tries to attack.
+     */
     public void setTarget(Creature target) {
         this.target = target;
     }
     
+    /**
+     * Getter to retrieve this creatures target towards which it will move and tries to attack.
+     * @return Creature object towards which this creature moves and tries to attack. Null in the case that no target has been acquired by this creature.
+     */
     public Creature getTarget() {
         return this.target;
     }
     
+    /**
+     * General method to call to move this creature.
+     * @param randomizer Random object to be passed over to method responsible of changing direction at certain points.
+     */
     public void move(Random randomizer) {
         if (target == null) {
             moveToRandomDirection();

@@ -1,9 +1,16 @@
 package ui;
 
-// import dao.CaventureDao;
+/**
+ * Main class to go around problems with JavaFX.
+ */
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    
+    /**
+     * Separate main classes main method calling Ui's main method to avoid problems with JavaFX.
+     * @param args String table used by main methods.
+     */
+    public static void main(String[] args) {
         Ui.main(args);
     }
 }

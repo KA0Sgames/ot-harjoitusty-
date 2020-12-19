@@ -11,6 +11,9 @@ import java.util.Random;
 public class SpawnPoints {
     private ArrayList<SpawnPoint> spawnPoints;
     
+    /**
+     * Constructor which creates ArrayList of predetermined spawn points as SpawnPoint objects.
+     */
     public SpawnPoints() {
         this.spawnPoints = new ArrayList<>();
         createList();
@@ -26,6 +29,11 @@ public class SpawnPoints {
         this.spawnPoints.add(new SpawnPoint(1070, 180));
     }
     
+    /**
+     * Method to retrieve random SpawnPoint object from predetermined list of possible options.
+     * @param random Random object used in picking one option from predetermined list.
+     * @return SpawnPoint object describing certain point at the game screen, picked out of predetermined list.
+     */
     public SpawnPoint getRandomSpawn(Random random) {
         return this.spawnPoints.get(random.nextInt(this.spawnPoints.size()));
     }
