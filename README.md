@@ -4,6 +4,19 @@
 
 Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
+### Ohjelman toimivuudesta
+
+Ohjelma on testattu laitoksen cubbli linuxilla javan versiolla 11, jolla se toimii. Muilla javan versioilla ohjelmaa
+ei ole testattu.
+
+Omalla windows koneella en ole saanut suoritettua mvn package komennolla generoitua jar tiedostoa. Graafisessa
+käyttöliittymässä kaksoisklikkaus ei tee mitään näkyvää. Tämä saattaa johtua joidenkin windows asetusten tai tiedoston
+oletus avaamis sovelluksen asetuksista. Windows subsystem for Linuxin puolella komentoriviltä ajamisen yritys kaatuu
+virheviestiin jonka mukaan näyttölaitteelle ei ole oikeuksia. Kurssilaisten mukaan tämä viesti tulee yleensä
+tilanteessa, jossa ssh yhteyden yli yritetään ajaa graafista sovellusta.
+
+Olen kuitenkin saanut ajettua ohjelman windowsin puolella suoraan netbeansistä, jolloin se toimii moitteetta.
+
 ### Dokumentaatio
 
 [Vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
