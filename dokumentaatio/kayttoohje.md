@@ -32,7 +32,7 @@ Onnistuneen käyttäjän luonnin yhteydessä palataan kirjautumisnäkymään.
 
 ### Hahmon valinta
 
-Onniostuneen kirjautumisen myötä siirrytään käyttäjän hahmot listaavaan näkymään:
+Onnistuneen kirjautumisen myötä siirrytään käyttäjän hahmot listaavaan näkymään:
 
 ![character screen](/dokumentaatio/pictures/characterscreen.jpg)
 

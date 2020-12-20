@@ -14,7 +14,9 @@ Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
 ### Releaset
 
+[Viikko 6](https://github.com/KA0Sgames/ot-harjoitustyo/releases/tag/viikko6)
 
+[Loppupalautus](https://github.com/KA0Sgames/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 ### Komentorivitoiminnot
 
