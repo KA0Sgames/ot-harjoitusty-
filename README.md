@@ -8,9 +8,11 @@ Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
 [Vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
-[työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
+[Työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
 
 [Käyttöohje](/dokumentaatio/kayttoohje.md)
+
+[Testausdokumentti](/dokumentaatio/testaus.md)
 
 ### Releaset
 

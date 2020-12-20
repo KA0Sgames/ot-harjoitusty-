@@ -38,4 +38,5 @@
 |           | 2   |Testien kirjoittamista Creature luokalle. |
 |19.12.-20  | 4   |Javadocin kirjoittaminen kaikille muille luokille paitsi CaventureDao:lle, jolle se oli jo kirjoitettu. |
 |20.12.-20  | 2   |Käyttöohjeen kirjoitus, sekä release linkkien ja javadoc ohjeen lisäys README.md tiedostoon. |
-| yht       | 74  | |
+|           | 1   |Testausdokumentin kirjoitus. |
+| yht       | 75  | |
