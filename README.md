@@ -4,12 +4,17 @@
 
 Sovelluksella käyttäjä voi pelata yksinkertaista luolastoseikkailua.
 
-
 ### Dokumentaatio
 
 [Vaatimusmäärittely](/dokumentaatio/vaatimusmaarittely.md)
 
 [työaikakirjanpito](/dokumentaatio/tyoaikakirjanpito.md)
+
+[Käyttöohje](/dokumentaatio/kayttoohje.md)
+
+### Releaset
+
+
 
 ### Komentorivitoiminnot
 
@@ -37,6 +42,8 @@ Komento
  mvn package
 ```
 
+generoi hakemistoon target suoritettavan jar tiedoston Luolastoseikkailu-1.0-SNAPSHOT.jar
+
 #### Checkstyle
 
 Tiedoston checkstyle.xml määrittelemät tarkastukset suoritetaan komennolla:
@@ -46,3 +53,13 @@ mvn jxr:jxr checkstyle:checkstyle
 ```
 
 Mahdolliset virheilmoitukset näkee avaamalla selaimella tiedoston target/site/checkstyle.html
+
+#### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia generoituu kansioon target/site/apidocs/ ja juurikansion tarkasteluun pääsee avaamalla tiedoston index.html
